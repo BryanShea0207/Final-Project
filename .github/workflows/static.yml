@@ -38,6 +38,10 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+      - name: Serve index.html
+        run: |
+          cd No-Framework/Menu
+          npx http-server -p 8080
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
