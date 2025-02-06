@@ -1,5 +1,6 @@
 body {
     background-color: rgb(125, 233, 179);
+    z-index: -1;
 }
 
 nav {
@@ -72,4 +73,16 @@ a{
 *:link{
     text-decoration: none;
     color: #000;
+}
+
+li:hover {
+    background-color: #83f16d;
+}
+
+.content {
+    z-index: -1;
+}
+
+.Edit-Div:active .Edit-List {
+    display: block;
 }
