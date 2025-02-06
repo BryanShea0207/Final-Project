@@ -1,0 +1,75 @@
+body {
+    background-color: rgb(125, 233, 179);
+}
+
+nav {
+    display: inline-flex;
+    background-color: #007c00;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.File-Div, .Edit-Div, .View-Div {
+    text-align: left;
+    padding-right: 10%;
+    z-index: 1;
+    position: relative;
+}
+
+.File-List, .Edit-List, .View-List {
+    display: none;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+nav > div:hover {
+    background-color: #24d401;
+}
+
+ul {
+    list-style: none;
+    display: inline-block;
+}
+
+.File-Div:hover .File-List {
+    display: block;
+}
+
+.Edit-Div:hover .Edit-List {
+    display: block;
+}
+
+.View-Div:hover .View-List {
+    display: block;
+}
+
+a{
+    font: 25px sans-serif ;
+    color: #000;
+}
+
+.Instructions, .Extra-Credit {
+    position: relative;
+    background-color: #fff;
+    font: 15px sans-serif;
+    border-left: 5px solid;
+    z-index: -1;
+    margin: 20px;
+    padding: 3px 10px 10px;
+}
+
+.Instructions {
+    border-left-color: green;
+}
+
+.Extra-Credit {
+    border-left-color: yellow;
+}
+
+*:link{
+    text-decoration: none;
+    color: #000;
+}
