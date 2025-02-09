@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>First Bulma Example</title>
+</head>
+
+<body>
+    <nav class="navbar is-primary">
+        <div class="navbar-item is-hoverable">
+            <a class="navbar-item">Bulma</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-item">Home</a>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Docs</a>
+            <div class="navbar-dropdown">
+                <a class="navbar-item">Overview</a>
+                <a class="navbar-item">Modifiers</a>
+                <a class="navbar-item">Columns</a>
+                <a class="navbar-item">Layout</a>
+                <a class="navbar-item">Form</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">Elements</a>
+                <a class="navbar-item is-selected">Components</a>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <button class="button is-white">Tweet</button>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        Download
+                    </a>
+                </div>
+            </div>
+    </nav>
+
+    <div class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="card">
+                        <div class="card-header has-dropdown">
+                            <h3 class="title is-3">Component</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Phasellus nec iaculis mauris. @bulmaio. #css #responsive
+                                    11:09 PM - 1 Jan 2016
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a class="card-footer-item">Save</a>
+                            <a class="card-footer-item">Edit</a>
+                            <a class="card-footer-item">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <div class="panel">
+                        <div class="tabs is-boexed">
+                            <ul>
+                                <li class="is-active">
+                                    <a>
+                                        <span class="icon">
+                                            <i class="fas fa-clipboard-list"></i>
+                                        </span>
+                                        <span>Current</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="icon">
+                                            <i class="fas fa-calendar-times"></i>
+                                        </span>
+                                        <span>Completed</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="icon">
+                                            <i class="fas fa-calendar-day"></i>
+                                        </span>
+                                        <span>Upcoming</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="icon">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                        <span>All</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-block">
+                            <input class="input" type="text" placeholder="New Task">
+                        </div>
+                        <div class="panel-block">
+                            <div class="checkboxes">
+                                <div class="panel-block">
+                                    <input class="checkbox" type="checkbox">
+                                    <label>Make Bulma great again</label><br>
+                                </div>
+                                <div class="panel-block">
+                                    <input class="checkbox" type="checkbox">
+                                    <label>Add some more features</label><br>
+                                </div>
+                                <div class="panel-block">
+                                    <input class="checkbox" type="checkbox">
+                                    <label>Make a github account</label><br>
+                                </div>
+                                <div class="panel-block">
+                                    <input class="checkbox" type="checkbox">
+                                    <label>Learn how to use github</label><br>
+                                </div>
+                                <div class="panel-block">
+                                    <input class="checkbox" type="checkbox">
+                                    <label> add a .gitignore file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message is-primary">
+                        <div class="message-header">
+                            <p>Make a github account</p>
+                        </div>
+                        <div class="message-body">
+                            <p>
+                                Go to <a>github.com</a> and create an account. <br> That's where
+                                you'll be able to share your work with the world.. thats
+                                where we will be putting all of our code for this class.
+                            </p>
+                            <progress class="progress is-primary" value="50" max="100"></progress>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            Name
+                            <input class="input" type="text" placeholder="Text input">
+                            <br>
+                            Username
+                            <input class="input" type="text" value="bulma">
+                            <br>
+                            Email
+                            <input class="input" type="email" value="hello@">
+                            <br>
+                            Subject
+                            <br>
+                            <div class="dropdown">
+                                <div class="select">
+                                    <select>
+                                        <option>Select dropdown</option>
+                                        <option>With options</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            Message
+                            <textarea class="textarea" placeholder="Text area"></textarea>
+                            <br>
+                            <input class="checkbox" type="checkbox">
+                            <label>I agree to the <a>terms and conditions</a></label>
+                            <br>
+                            <input class="radio" type="radio">
+                            <label>Yes</label>
+                            <input class="radio" type="radio">
+                            <label>No</label>
+                            <br>
+                            <button class="button is-primary">Submit</button>
+                            <button class="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-quarter">
+                    <h3 class="title">Table of contents</h3>
+                    <h4 class="subtitle"> intra-page navigation</h4>
+                    <div class="menu">
+                        <p class="menu-label">General</p>
+                        <ul class="menu-list">
+                            <li><a>Dashboard</a></li>
+                            <li><a>Customers</a></li>
+                        </ul>
+                        <p class="menu-label">Administration</p>
+                        <ul class="menu-list">
+                            <li><a>Team Settings</a></li>
+                            <li>
+                                <a class="is-active">Manage Your Team</a>
+                                <ul>
+                                    <li><a>Members</a></li>
+                                    <li><a>Plugins</a></li>
+                                    <li><a>Add a member</a></li>
+                                </ul>
+                            </li>
+                            <li><a>Invitations</a></li>
+                            <li>Cloud Storage Enviroment Settings</li>
+                            <li>Authentication</li>
+                        </ul>
+                        <p class="menu-label">Transactions</p>
+                        <ul class="menu-list">
+                            <li><a>Payments</a></li>
+                            <li><a>Transfers</a></li>
+                            <li><a>Balance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

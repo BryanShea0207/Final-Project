@@ -82,7 +82,3 @@ li:hover {
 .content {
     z-index: -1;
 }
-
-.Edit-Div:active .Edit-List {
-    display: block;
-}
