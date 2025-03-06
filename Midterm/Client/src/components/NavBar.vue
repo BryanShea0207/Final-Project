@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import HomeView from '../views/HomeView.vue';
+import AboutView from '../views/AboutView.vue';
+import { ref } from 'vue';
+
+const currentView = ref('HomeView');
 
 </script>
 

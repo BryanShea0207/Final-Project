@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import HomeView from './views/HomeView.vue';
+import AboutView from './views/AboutView.vue';
 import NavBar from './components/NavBar.vue';
-import AddExercise from './components/AddExercise.vue';
-import WeightSummary from './components/WeightSummary.vue';
-import CardioSummary from './components/CardioSummary.vue';
 </script>
 
 <template>
@@ -10,19 +9,7 @@ import CardioSummary from './components/CardioSummary.vue';
       <NavBar />
   </header>
   <main>
-    <section class="columns has-background-link-dark pt-5">
-      <div class="column is-one-quarter">
-        <AddExercise />
-      </div>
-      <div class="column is-one-third">
-        <div class="container pb-5">
-        <WeightSummary />
-        </div>
-        <div class="container">
-        <CardioSummary />
-        </div>
-      </div>
-    </section>
+    <HomeView />
   </main>
 </template>
 
