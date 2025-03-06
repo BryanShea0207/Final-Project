@@ -2,14 +2,15 @@
 import HomeView from '../views/HomeView.vue';
 import { ref } from 'vue';
 
-const currentView = ref('HomeView');
+const isActive = ref(false);
 
 </script>
 
 <template>
     <nav class="navbar has-background-info-dark has-text-info-dark-invert" role="navigation" aria-label="main navigation">
   <div class="navbar-brand has-text-info-dark-invert">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+      :class="{ 'is-active': isActive }" @click="isActive = !isActive">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -17,7 +18,7 @@ const currentView = ref('HomeView');
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu has-text-info-dark-invert">
+  <div id="navbarBasicExample" class="navbar-menu has-text-info-dark-invert" :class="{ 'is-active': isActive }">
     <div class="navbar-start">
       
       <RouterLink to="/" class="navbar-item has-text-info-dark-invert">
