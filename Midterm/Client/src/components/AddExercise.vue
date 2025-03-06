@@ -24,7 +24,7 @@
  
  <template>
     <div class="box">
-        <h1 class="title">Exercise Summery</h1>
+        <h1 class="title">Add an Exercise</h1>
         <div class="columns">
             <div class="column">
                 <div class="tabs">

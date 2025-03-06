@@ -10,19 +10,27 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <p class="card-header-title">Exercise Summery</p>
+            <p class="card-header-title">Exercise Summary</p>
         </div>
         <div class="columns card-content">
-            <div class="column is-half">
-                <div class="container">
-                    <h3 class="title is-4">00 Reps X <br /> 00 Sets</h3>
-                    <p class="subtitle is-5">Work Done</p>
+            <div class="column is-half pb-0">
+                <div class="container pb-5">
+                    <h3 class="title is-3">00.00 Miles</h3>
+                    <p class="subtitle is-5">Total Distance</p>
+                </div>
+                <div class="container pd-0">
+                    <h3 class="title is-3">00:00:00</h3>
+                    <p class="subtitle is-5">Total Time</p>
                 </div>
             </div>
-            <div class="column is-half">
-                <div class="container">
-                    <h3 class="title is-3">000 lbs</h3>
-                    <p class="subtitle is-5">Total Weight</p>
+            <div class="column is-half pb-0">
+                <div class="container pb-5">
+                    <h3 class="title is-3">000 Cal</h3>
+                    <p class="subtitle is-5">Total Calories</p>
+                </div>
+                <div class="container pd-0">
+                    <h3 class="title is-3">00'00"/Mile</h3>
+                    <p class="subtitle is-5">Average Pace</p>
                 </div>
             </div>
         </div>
