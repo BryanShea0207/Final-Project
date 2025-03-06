@@ -59,12 +59,6 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Rest Time</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Rest Time">
-                    </div>
-                </div>
-                <div class="field">
                     <label class="label">Notes</label>
                     <div class="control">
                         <textarea class="textarea" placeholder="Notes"></textarea>
@@ -93,12 +87,6 @@
                         <label class="label">Time</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Time">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Rest Time</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Rest Time">
                         </div>
                     </div>
                     <div class="field">

@@ -1,11 +1,18 @@
 <script setup lang="ts">
+import WeightSummary from '@/components/WeightSummary.vue';
+import CardioSummary from '@/components/CardioSummary.vue';
 
 </script>
 
 <template>
-    <div class="activity">
-        <h1>This is an activity page</h1>
-    </div>
+    <section class="section">
+        <div class="container">
+            <WeightSummary />
+        </div>
+        <div class="container">
+            <CardioSummary />
+        </div>
+    </section>
 </template>
 
 <style scoped>
