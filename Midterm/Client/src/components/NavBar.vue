@@ -20,16 +20,12 @@ const currentView = ref('HomeView');
   <div id="navbarBasicExample" class="navbar-menu has-text-info-dark-invert">
     <div class="navbar-start">
       
-      <RouterLink to="/">
-        <a class="navbar-item has-text-info-dark-invert">
+      <RouterLink to="/" class="navbar-item has-text-info-dark-invert">
           Home
-        </a>
       </RouterLink>
 
-      <RouterLink to="/activity">
-        <a class="navbar-item has-text-info-dark-invert">
+      <RouterLink to="/activity" class="navbar-item has-text-info-dark-invert">
           My Activity
-        </a>
       </RouterLink>
       
     </div>

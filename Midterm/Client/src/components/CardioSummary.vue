@@ -40,7 +40,8 @@
             </div>
         </div>
         <div class="card-footer">
-            <a class="card-footer-item is-button" @click="showNotes">View Details</a>
+            <a class="card-footer-item is-button" @click="showNotes">View Notes</a>
+            <a class="card-footer-item is-button">Share</a>
         </div>
         <div class="card-footer is-hidden" id="cardioNotes">
             <div class="card-content">

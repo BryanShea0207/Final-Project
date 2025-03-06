@@ -6,6 +6,11 @@
     <div class="card">
         <div class="card-content">
             <div class="media">
+                <slot></slot>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="media">
                 <p class="title is-4">John Smith</p>    
             </div>
             <div class="content">
