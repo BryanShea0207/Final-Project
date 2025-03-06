@@ -1,10 +1,5 @@
 <script setup lang="ts">
-    function showNotes() {
-        const notes = document.getElementById('notes');
-        if (notes) {
-            notes.classList.toggle('is-hidden');
-        }
-    }
+    
 </script>
 
 <template>
@@ -14,30 +9,26 @@
                 <p class="card-header-title">Exercise Summary</p>
             </div>
             <div class="columns card-content">
-                <div class="column is-half">
+                <div class="column">
                     <div class="container">
                         <h3 class="title is-4">00 Reps X <br /> 00 Sets</h3>
                         <p class="subtitle is-5">Work Done</p>
                     </div>
                 </div>
-                <div class="column is-half">
+                <div class="column">
                     <div class="container">
                         <h3 class="title is-3">000 lbs</h3>
                         <p class="subtitle is-5">Total Weight</p>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <a class="card-footer-item is-button" @click="showNotes">View Notes</a>
-                <a class="card-footer-item is-button">Share</a>
-            </div>
-            <div class="card-footer is-hidden" id="notes">
-                <div class="card-content">
-                    <p class="subtitle is-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                    </p>
+                <div class="column">
+                    <div class="container">
+                        <h3 class="title is-3">000 Cal</h3>
+                        <p class="subtitle is-5">Total Calories</p>
+                    </div>
                 </div>
             </div>
+            <slot></slot>
         </div>
     </section>
 </template>
