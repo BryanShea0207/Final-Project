@@ -1,51 +1,56 @@
 <script setup lang="ts">
-import HomeView from '../views/HomeView.vue';
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const isActive = ref(false);
-
+const isActive = ref(false)
 </script>
 
 <template>
-    <nav class="navbar has-background-info-dark has-text-info-dark-invert" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand has-text-info-dark-invert">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
-      :class="{ 'is-active': isActive }" @click="isActive = !isActive">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu has-text-info-dark-invert" :class="{ 'is-active': isActive }">
-    <div class="navbar-start">
-      
-      <RouterLink to="/" class="navbar-item has-text-info-dark-invert">
-          Home
-      </RouterLink>
-
-      <RouterLink to="/activity" class="navbar-item has-text-info-dark-invert">
-          My Activity
-      </RouterLink>
-      
+  <nav
+    class="navbar has-background-info-dark has-text-info-dark-invert"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <div class="navbar-brand has-text-info-dark-invert">
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+        :class="{ 'is-active': isActive }"
+        @click="isActive = !isActive"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-info-dark">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
+
+    <div
+      id="navbarBasicExample"
+      class="navbar-menu has-text-info-dark-invert"
+      :class="{ 'is-active': isActive }"
+    >
+      <div class="navbar-start">
+        <RouterLink to="/" class="navbar-item has-text-info-dark-invert"> Home </RouterLink>
+
+        <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert">
+          My Activity
+        </RouterLink>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-info-dark">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light"> Log in </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
