@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { WeightSummary, CardioSummary } from '@/models/summary'
+import { SummaryWeight, SummaryCardio } from '@/models/summary'
 import { summaries } from '@/models/summary'
 import { ref } from 'vue'
 
@@ -85,7 +85,7 @@ const showInputs = ref(false)
           </div>
           <div class="field">
             <div class="control">
-              <button class="button is-primary " @click='createWeightSummary()'>Save</button>
+              <button class="button is-primary " @click='createSummaryWeight()'>Save</button>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ const showInputs = ref(false)
           </div>
           <div class="field">
             <div class="control">
-              <button class="button is-primary" @click='createCardioSummary()'>Save</button>
+              <button class="button is-primary" @click='createSummaryCardio()'>Save</button>
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@ const showInputs = ref(false)
 </template>
 
 <script lang="ts">
-function createWeightSummary() {
+function createSummaryWeight() {
   const weightName = document.getElementById('weightName') as HTMLInputElement
   const weight = document.getElementById('weight') as HTMLInputElement
   const sets = document.getElementById('sets') as HTMLInputElement
@@ -135,7 +135,7 @@ function createWeightSummary() {
   const notes = document.getElementById('weightNote') as HTMLInputElement
 
   if (weightName && sets && reps && weight && notes) {
-    const summary = new WeightSummary(
+    const summary = new SummaryWeight(
       weightName.value, 
       Number(sets.value), 
       Number(reps.value), 
@@ -145,14 +145,14 @@ function createWeightSummary() {
   }
 }
 
-function createCardioSummary() {
+function createSummaryCardio() {
   const cardioName = document.getElementById('cardioName') as HTMLInputElement
   const distance = document.getElementById('distance') as HTMLInputElement
   const time = document.getElementById('time') as HTMLInputElement
   const notes = document.getElementById('cardioNote') as HTMLInputElement
 
   if (cardioName && distance && time && notes) {
-    const summary = new CardioSummary(
+    const summary = new SummaryCardio(
       cardioName.value, 
       Number(distance.value), 
       Number(time.value),  

@@ -7,11 +7,13 @@ export abstract class Summary {
     name = "";
     note = new Note("", 0);
     id = 0;
+    type = "";
 
-    constructor(name: string, note: string){
+    constructor(name: string, note: string, type: string){
         this.name = name;
         this.note = new Note(note,Summary.idCounter);
         this.id = Summary.idCounter++;
+        this.type = type;
     }
 }
 
@@ -25,26 +27,26 @@ export class Note {
     }
 }
 
-export class WeightSummary extends Summary{
+export class SummaryWeight extends Summary{
   sets = 0;
   reps = 0;
   weight = 0;
   
 
   constructor(name: string, sets: number, reps: number, weight: number, note: string) {
-    super(name, note);
+    super(name, note, "weight");
     this.sets = sets;
     this.reps = reps;
     this.weight = weight;
   }
 }
 
-export class CardioSummary extends Summary{
+export class SummaryCardio extends Summary{
     duration = 0;
     distance = 0;
 
     constructor(name: string, duration: number, distance: number, note: string) {
-      super(name, note);
+      super(name, note, "cardio");
       this.duration = duration;
       this.distance = distance;
       

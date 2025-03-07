@@ -19,7 +19,6 @@ import SocialPost from '@/components/SocialPost.vue';
         </div>
         <div class="container p-3">
           <SocialPost>
-            <WeightSummary class="p-0"/>
           </SocialPost>
         </div>
       </div>
