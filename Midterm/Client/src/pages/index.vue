@@ -3,6 +3,7 @@ import WeightSummary from '@/components/WeightSummary.vue';
 import AddExercise from '../components/AddExercise.vue';
 import CardioSummary from '../components/CardioSummary.vue';
 import SocialPost from '@/components/SocialPost.vue';
+import { posts } from '@/models/posts';
 </script>
 
 <template>
@@ -12,13 +13,13 @@ import SocialPost from '@/components/SocialPost.vue';
         <AddExercise />
       </div>
       <div class="column is-half">
-        <div class="container p-3">
-          <SocialPost>
-          </SocialPost>
-        </div>
-        <div class="container p-3">
-          <SocialPost>
-          </SocialPost>
+        <div class="container" v-for="post in posts">
+          <SocialPost :post = "post">
+            <WeightSummary v-if="post.summary.type === 'weight'" :data = "post.summary" >
+            </WeightSummary>
+            <CardioSummary v-else :data = "post.summary">
+            </CardioSummary>
+          </SocialPost>  
         </div>
       </div>
     </section>

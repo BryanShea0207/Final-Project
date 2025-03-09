@@ -134,7 +134,6 @@ const showInputs = ref(false)
       </div>
     </div>
   </div>
-  {{ summaries }}
 </template>
 
 <script lang="ts">
