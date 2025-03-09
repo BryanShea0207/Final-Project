@@ -1,4 +1,7 @@
 <script setup lang="ts">
+    import { Summary, SummaryCardio} from '@/models/summary';
+
+    const props = defineProps<{ data: Summary }>()
 
 </script>
 
@@ -11,25 +14,19 @@
         <div class="columns card-content">
             <div class="column">
                 <div class="container">
-                    <h3 class="title is-3">00.00 Miles</h3>
+                    <h3 class="title is-3">{{ (data as SummaryCardio).distance}} Miles</h3>
                     <p class="subtitle is-5">Total Distance</p>
                 </div>
             </div>
             <div class="column">
                 <div class="container">
-                    <h3 class="title is-3">00:00</h3>
+                    <h3 class="title is-3">{{(data as SummaryCardio).time}} minute(s)</h3>
                     <p class="subtitle is-5">Total Time</p>
                 </div>
             </div>
             <div class="column">
-                <div class="container ">
-                    <h3 class="title is-3">000 Cal</h3>
-                    <p class="subtitle is-5">Total Calories</p>
-                </div>
-            </div>
-            <div class="column">
                 <div class="container">
-                    <h3 class="title is-3">00'00"/ Mile</h3>
+                    <h3 class="title is-3">{{ (data as SummaryCardio).getPace() }}/ Mile</h3>
                     <p class="subtitle is-5">Average Pace</p>
                 </div>
             </div>

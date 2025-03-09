@@ -60,23 +60,28 @@ const showInputs = ref(false)
             </div>
           </div>
           <div class="field">
-            <label class="label">Sets</label>
-            <div class="control">
-              <input class="input" type="number" placeholder="Sets" id="sets" />
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Reps</label>
-            <div class="control">
-              <input class="input" type="number" placeholder="Reps" id="reps"/>
-            </div>
-          </div>
-          <div class="field">
             <label class="label">Weight</label>
-            <div class="control">
-              <input class="input" type="number" placeholder="Weight" id="weight"/>
+            <div class="control is-flex">
+              <input class="input" type="number" placeholder="Weight" id="weight">
+                <span class="has-text-right pt-2">lbs</span> 
+              </input>
             </div>
           </div>
+          <div class="container is-flex">
+            <div class="field">
+              <label class="label">Sets</label>
+              <div class="control is-flex">
+                <input class="input" type="number" placeholder="Sets" id="sets" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Reps</label>
+              <div class="control is-flex">
+                <input class="input" type="number" placeholder="Reps" id="reps"/>
+              </div>
+            </div>
+          </div>
+          
           <div class="field">
             <label class="label">Notes</label>
             <div class="control">
@@ -89,6 +94,7 @@ const showInputs = ref(false)
             </div>
           </div>
         </div>
+
         <div class="is-hidden tab-content" id="cardio">
           <div class="field">
             <label class="label">Exercise Name</label>
@@ -99,13 +105,18 @@ const showInputs = ref(false)
           <div class="field">
             <label class="label">Distance</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Distance" id="distance"/>
+              <div class="is-flex is-align-items-center">
+              <input class="input" type="text" placeholder="Distance" id="distance">
+                <span class="has-text-right">Miles</span>
+              </input>
+              </div>
             </div>
           </div>
           <div class="field">
             <label class="label">Time</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Time" id="time"/>
+            <div class="control is-flex is-align-items-center">
+              <input class="input" type="number" placeholder="Hours" id="hour"/>
+              <input class="input" type="number" placeholder="Minutes" id="minute"/>
             </div>
           </div>
           <div class="field">
@@ -148,14 +159,16 @@ function createSummaryWeight() {
 function createSummaryCardio() {
   const cardioName = document.getElementById('cardioName') as HTMLInputElement
   const distance = document.getElementById('distance') as HTMLInputElement
-  const time = document.getElementById('time') as HTMLInputElement
+  const time = [
+    document.getElementById('hour') as HTMLInputElement,
+    document.getElementById('minute') as HTMLInputElement]
   const notes = document.getElementById('cardioNote') as HTMLInputElement
 
   if (cardioName && distance && time && notes) {
     const summary = new SummaryCardio(
-      cardioName.value, 
-      Number(distance.value), 
-      Number(time.value),  
+      cardioName.value,  
+      Number(time[0].value) * 60 + Number(time[1].value),  
+      Number(distance.value),
       notes.value);
     summaries.value.push(summary)
   }

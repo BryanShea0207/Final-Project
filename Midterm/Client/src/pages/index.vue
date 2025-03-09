@@ -8,13 +8,12 @@ import SocialPost from '@/components/SocialPost.vue';
 <template>
   <main>
     <section class="columns has-background-link-dark pt-5">
-      <div class="column is-one-quarter">
+      <div class="column is-one-fifth">
         <AddExercise />
       </div>
       <div class="column is-half">
         <div class="container p-3">
           <SocialPost>
-            <CardioSummary class="p-0"/>
           </SocialPost>
         </div>
         <div class="container p-3">

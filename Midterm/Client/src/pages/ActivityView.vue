@@ -13,7 +13,7 @@ import { summaries, SummaryWeight} from '@/models/summary';
             <WeightSummary v-if="summary.type === 'weight'" :data = "summary" >
                 <SummaryFooter />
             </WeightSummary>
-            <CardioSummary v-else>
+            <CardioSummary v-else :data = "summary">
                 <SummaryFooter />
             </CardioSummary>
         </div>

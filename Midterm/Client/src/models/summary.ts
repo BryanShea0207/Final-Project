@@ -42,14 +42,20 @@ export class SummaryWeight extends Summary{
 }
 
 export class SummaryCardio extends Summary{
-    duration = 0;
+    time = 0;
     distance = 0;
 
-    constructor(name: string, duration: number, distance: number, note: string) {
+    constructor(name: string, time: number, distance: number, note: string) {
       super(name, note, "cardio");
-      this.duration = duration;
+      this.time = time;
       this.distance = distance;
       
     }
+
+    getPace(): String {
+      const pace = this.time / this.distance;
+      return Math.floor(pace / 60) + '\'' + pace % 60 + '\"';
+    }
+
 }
 
