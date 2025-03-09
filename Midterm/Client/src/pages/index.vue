@@ -7,7 +7,7 @@ import SocialPost from '@/components/SocialPost.vue';
 
 <template>
   <main>
-    <section class="columns has-background-link-dark pt-5">
+    <section class="columns pt-5">
       <div class="column is-one-fifth">
         <AddExercise />
       </div>

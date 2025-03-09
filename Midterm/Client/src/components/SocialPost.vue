@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="card">
+    <div class="card has-background-grey-darker">
         <div class="card-content">
             <div class="media p-0 m-0">
                 <div class="container">

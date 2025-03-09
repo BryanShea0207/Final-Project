@@ -11,10 +11,10 @@ import { summaries, SummaryWeight} from '@/models/summary';
     <section class="section">
         <div class="container" v-for="summary in summaries">
             <WeightSummary v-if="summary.type === 'weight'" :data = "summary" >
-                <SummaryFooter />
+                <SummaryFooter :note="summary.note" />
             </WeightSummary>
             <CardioSummary v-else :data = "summary">
-                <SummaryFooter />
+                <SummaryFooter :note="summary.note"/>
             </CardioSummary>
         </div>
     </section>

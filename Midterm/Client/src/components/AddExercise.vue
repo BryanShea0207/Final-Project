@@ -34,7 +34,7 @@ const showInputs = ref(false)
 </script>
 
 <template>
-  <div class="box mr-0">
+  <div class="box mr-0 has-background-grey-darker">
     <h1 class="title is-4">
       Add an Exercise
       <a role="button" class="button is-primary" @click="showInputs = !showInputs">
@@ -62,7 +62,7 @@ const showInputs = ref(false)
           <div class="field">
             <label class="label">Weight</label>
             <div class="control is-flex">
-              <input class="input" type="number" placeholder="Weight" id="weight">
+              <input class="input" type="number" placeholder="Weight" id="pounds">
                 <span class="has-text-right pt-2">lbs</span> 
               </input>
             </div>
@@ -140,17 +140,17 @@ const showInputs = ref(false)
 <script lang="ts">
 function createSummaryWeight() {
   const weightName = document.getElementById('weightName') as HTMLInputElement
-  const weight = document.getElementById('weight') as HTMLInputElement
+  const pounds = document.getElementById('pounds') as HTMLInputElement
   const sets = document.getElementById('sets') as HTMLInputElement
   const reps = document.getElementById('reps') as HTMLInputElement
   const notes = document.getElementById('weightNote') as HTMLInputElement
 
-  if (weightName && sets && reps && weight && notes) {
+  if (weightName && sets && reps && pounds && notes) {
     const summary = new SummaryWeight(
       weightName.value, 
       Number(sets.value), 
       Number(reps.value), 
-      Number(weight.value), 
+      Number(pounds.value), 
       notes.value);
     summaries.value.push(summary)
   }

@@ -1,21 +1,20 @@
 <script setup lang="ts">
-    function showNotes() {
-        const notes = document.getElementById('notes');
-        if (notes) {
-            notes.classList.toggle('is-hidden');
-        }
-    }
+    import { ref, defineProps } from 'vue';
+
+    const noteVisable = ref(false);
+
+    const props = defineProps<{ note: string}>()
 </script>
 
 <template>
-    <div class="card-footer">
-        <a class="card-footer-item is-button" @click="showNotes">View Notes</a>
+    <div class="card-footer has-background-gray-darker">
+        <a class="card-footer-item is-button" @click='noteVisable = !noteVisable'>View Notes</a>
         <a class="card-footer-item is-button">Share</a>
     </div>
-    <div class="card-footer is-hidden" id="notes">
+    <div class="card-footer has-background-geay-darker" v-if="noteVisable">
         <div class="card-content">
             <p class="subtitle is-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                {{ note }}
             </p>
         </div>
     </div>

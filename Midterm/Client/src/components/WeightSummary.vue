@@ -7,30 +7,35 @@
 </script>
 
 <template>
-    <section class="section py-2">
-        <div class="card">
-            <div class="card-header">
-                <p class="card-header-title">Exercise Summary {{ (data as SummaryWeight).name }}</p>
+    <section class="section py-2 ">
+        <div class="card has-background-grey-dark">
+            <div class="card-header has-background-grey-darker">
+                <p class="card-header-title">Exercise Summary </p>
+                
+            </div>
+            <div class="container has-text-centered is-title is-capitalized is-size-4 has-text-white has-text-weight-bold">
+                {{ (data as SummaryWeight).name }}
             </div>
             <div class="columns card-content">
+                
                 <div class="column">
-                    <div class="container">
-                        <h3 class="title is-4">
+                    <div class="container ">
+                        <h3 class="title is-4 has-text-centered">
                             {{ (data as SummaryWeight).reps }} Reps X <br /> {{(data as SummaryWeight).sets}} Sets
                         </h3>
-                        <p class="subtitle is-5">Work Done</p>
+                        <p class="subtitle is-5 has-text-centered">Work Done</p>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <h3 class="title is-3">{{(data as SummaryWeight).weight}} lbs</h3>
-                        <p class="subtitle is-5">Total Weight</p>
+                        <h3 class="title is-3 has-text-centered">{{(data as SummaryWeight).weight}} lbs</h3>
+                        <p class="subtitle is-5 has-text-centered">Weight</p>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <h3 class="title is-3">{{ data.id }} Cal</h3>
-                        <p class="subtitle is-5">Total Calories</p>
+                        <h3 class="title is-3 has-text-centered">{{ (data as SummaryWeight).getTotalWeight()  }} lbs</h3>
+                        <p class="subtitle is-5 has-text-centered">Total Weight</p>
                     </div>
                 </div>
             </div>
