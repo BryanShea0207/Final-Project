@@ -14,7 +14,7 @@ import { currentUser } from '@/components/UserList.vue'
         <AddExercise />
       </div>
       <div class="column is-half">
-        <div class="container" v-for="post in posts">
+        <div class="container py-3" v-for="post in posts">
           <SocialPost :post="post">
             <WeightSummary v-if="post.summary.type === 'weight'" :data="post.summary">
             </WeightSummary>
