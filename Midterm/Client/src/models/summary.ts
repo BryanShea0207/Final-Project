@@ -1,3 +1,4 @@
+import CardioSummary from "@/components/CardioSummary.vue";
 import { ref } from "vue";
 
 export abstract class Summary {
@@ -48,5 +49,6 @@ export class SummaryCardio extends Summary{
 }
 
 export const summaries = ref<Summary[]>([
-  new SummaryWeight("curls", 5, 3, 120, "max heart rate: 130")
+  new SummaryWeight("curls", 5, 3, 120, "max heart rate: 130"),
+  new SummaryCardio("Run", 15,2,"new PB")
 ]);
