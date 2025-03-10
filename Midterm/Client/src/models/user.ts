@@ -1,3 +1,4 @@
+import { ref } from "vue";
 import { Post } from "./posts";
 import type { Summary } from "./summary";
 
@@ -23,3 +24,5 @@ export class User {
         this.friends.push(friend);
     }
 }
+
+export const users = ref<User[]>([new User("john Smith")]);
