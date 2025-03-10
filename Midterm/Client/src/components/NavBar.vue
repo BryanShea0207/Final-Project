@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
+import { currentUser } from './UserList.vue'
+import { User } from '@/models/user'
 const isActive = ref(false)
 </script>
 
@@ -33,7 +34,7 @@ const isActive = ref(false)
       :class="{ 'is-active': isActive }"
     >
       <div class="navbar-start">
-        <RouterLink to="/" class="navbar-item has-text-info-dark-invert"> Home </RouterLink>
+        <RouterLink to="/main" class="navbar-item has-text-info-dark-invert"> Home </RouterLink>
 
         <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert">
           My Activity
@@ -43,9 +44,10 @@ const isActive = ref(false)
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-info-dark">
-              <strong>Sign up</strong>
+              <RouterLink to="/" @click="currentUser = new User('Signed Out')"
+                ><strong>Sign out</strong></RouterLink
+              >
             </a>
-            <a class="button is-light"> Log in </a>
           </div>
         </div>
       </div>

@@ -1,27 +1,21 @@
 <script setup lang="ts">
-import WeightSummary from '@/components/WeightSummary.vue';
-import AddExercise from '../components/AddExercise.vue';
-import CardioSummary from '../components/CardioSummary.vue';
-import SocialPost from '@/components/SocialPost.vue';
-import { posts } from '@/models/posts';
+import UserList from '@/components/UserList.vue'
+import { User, users } from '@/models/user'
+import { ref } from 'vue'
+
+const showUsers = ref(false)
+
+const currentUser = ref<User>()
 </script>
 
 <template>
-  <main>
-    <section class="columns pt-5">
-      <div class="column is-one-fifth">
-        <AddExercise />
+  <section class="section">
+    <div class="container">
+      <h1 class="title is-1 has-text-centered">Fitness Tracker</h1>
+      <div class="buttons are-large is-justify-content-center">
+        <a class="button has-text-centered" @click="showUsers = !showUsers">Login</a>
       </div>
-      <div class="column is-half">
-        <div class="container" v-for="post in posts">
-          <SocialPost :post = "post">
-            <WeightSummary v-if="post.summary.type === 'weight'" :data = "post.summary" >
-            </WeightSummary>
-            <CardioSummary v-else :data = "post.summary">
-            </CardioSummary>
-          </SocialPost>  
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
+  <UserList v-if="showUsers" class="is-flex is-justify-content-center" />
 </template>
