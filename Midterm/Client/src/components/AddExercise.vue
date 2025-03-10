@@ -106,7 +106,7 @@ const showInputs = ref(false)
             <label class="label">Distance</label>
             <div class="control">
               <div class="is-flex is-align-items-center">
-              <input class="input" type="text" placeholder="Distance" id="distance">
+              <input class="input" type="number" placeholder="Distance" id="distance">
                 <span class="has-text-right">Miles</span>
               </input>
               </div>
@@ -137,6 +137,13 @@ const showInputs = ref(false)
 </template>
 
 <script lang="ts">
+function clearContent(){
+    for(let element of document.querySelectorAll("input, textarea")){
+      (element as HTMLInputElement).value = ""
+    }
+
+  }
+
 function createSummaryWeight() {
   const weightName = document.getElementById('weightName') as HTMLInputElement
   const pounds = document.getElementById('pounds') as HTMLInputElement
@@ -152,6 +159,7 @@ function createSummaryWeight() {
       Number(pounds.value), 
       notes.value);
     summaries.value.push(summary)
+    clearContent()
   }
 }
 
@@ -170,6 +178,7 @@ function createSummaryCardio() {
       Number(distance.value),
       notes.value);
     summaries.value.push(summary)
+    clearContent()
   }
 }
 </script>

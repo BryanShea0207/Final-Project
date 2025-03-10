@@ -4,7 +4,7 @@ import AddExercise from '../components/AddExercise.vue'
 import CardioSummary from '../components/CardioSummary.vue'
 import SocialPost from '@/components/SocialPost.vue'
 import { posts } from '@/models/posts'
-import currentUser from '@/components/UserList.vue'
+import { currentUser } from '@/components/UserList.vue'
 </script>
 
 <template>
@@ -19,7 +19,6 @@ import currentUser from '@/components/UserList.vue'
             <WeightSummary v-if="post.summary.type === 'weight'" :data="post.summary">
             </WeightSummary>
             <CardioSummary v-else :data="post.summary"> </CardioSummary>
-            Logged in as: {{ currentUser.value }}
           </SocialPost>
         </div>
       </div>

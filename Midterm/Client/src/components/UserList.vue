@@ -3,9 +3,15 @@ import { User, users } from '@/models/user'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
-const currentUser = ref<User>()
-
 const menuToggle = ref(false)
+</script>
+
+<script lang="ts">
+export const currentUser = ref<User>()
+
+function setCurrentUser(index: number) {
+  currentUser.value = users.value[index]
+}
 </script>
 
 <template>
@@ -25,8 +31,9 @@ const menuToggle = ref(false)
           <div class="dropdown-item">
             <RouterLink
               to="/Main"
-              @click="currentUser = user"
+              @click="setCurrentUser(0)"
               class="button is-capitalized has-text-centered"
+              id="0"
             >
               {{ user.userName }}</RouterLink
             >
