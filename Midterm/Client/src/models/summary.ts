@@ -1,7 +1,5 @@
 import { ref } from "vue";
 
-export const summaries = ref<Summary[]>([]);
-
 export abstract class Summary {
     name = "";
     note = "";
@@ -47,6 +45,8 @@ export class SummaryCardio extends Summary{
       const pace = this.time / this.distance;
       return Math.floor(pace / 60) + '\'' + pace % 60 + '\"';
     }
-
 }
 
+export const summaries = ref<Summary[]>([
+  new SummaryWeight("curls", 5, 3, 120, "max heart rate: 130")
+]);
