@@ -43,9 +43,8 @@ const isActive = ref(false)
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-info-dark">
-              <strong>Sign up</strong>
+              <RouterLink to="/"><strong>Sign out</strong></RouterLink>
             </a>
-            <a class="button is-light"> Log in </a>
           </div>
         </div>
       </div>

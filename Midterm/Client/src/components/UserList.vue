@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { users } from '@/models/user'
+import { User, users } from '@/models/user'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+
+const currentUser = ref<User>()
 
 const menuToggle = ref(false)
 </script>
@@ -21,7 +23,11 @@ const menuToggle = ref(false)
           v-show="menuToggle"
         >
           <div class="dropdown-item">
-            <RouterLink to="/Main" class="button is-capitalized has-text-centered">
+            <RouterLink
+              to="/Main"
+              @click="currentUser = user"
+              class="button is-capitalized has-text-centered"
+            >
               {{ user.userName }}</RouterLink
             >
           </div>
