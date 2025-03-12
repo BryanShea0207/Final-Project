@@ -5,10 +5,10 @@ import users from "@/data/users.json";
 
 export interface User {
     userId: number;
-    username: string;
-    postID: Post[];
-    summary: Summary[];
-    friendID: number[];
+    userName: string;
+    posts: any[];
+    summaries: any[];
+    friends: any[];
 }
 
 export function getAll() {
@@ -16,5 +16,5 @@ export function getAll() {
 }
 
 export function getOne(id: number){
-    return users.users.filter((user) => user.userId == id)
+    return users.users[id]
 }

@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import UserList from '@/components/UserList.vue'
-import { User, users } from '@/models/user'
+import type { User } from '@/models/user'
 import { ref } from 'vue'
 
 const showUsers = ref(false)
-
-const currentUser = ref<User>()
 </script>
 
 <template>
@@ -17,5 +15,5 @@ const currentUser = ref<User>()
       </div>
     </div>
   </section>
-  <UserList v-if="showUsers" class="is-flex is-justify-content-center" />
+  <!--<UserList v-if="showUsers" class="is-flex is-justify-content-center" />-->
 </template>

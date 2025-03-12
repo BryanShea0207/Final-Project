@@ -3,11 +3,12 @@
     {
       "userId": 0,
       "userName": "Admin",
-      "postID": [],
-      "summaryID": [],
-      "friendsID": []
+      "posts": [],
+      "summaries": [],
+      "friends": [1]
     },
     {
+      "userId": 1,
       "userName": "John Smith",
       "posts": [],
       "summaries": [
