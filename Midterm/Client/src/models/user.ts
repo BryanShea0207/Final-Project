@@ -1,28 +1,20 @@
 import { ref } from "vue";
-import { Post } from "./posts";
+import type { Post } from "./posts";
 import type { Summary } from "./summary";
+import users from "@/data/users.json";
 
-export class User {
-    userName = "";
-    posts: Post[] = [];
-    summaries: Summary[] = [];
-    friends: User[] = [];
-
-    constructor(userName: string){
-        this.userName = userName;
-    } 
-
-    addSummary(workout: Summary){
-        this.summaries.push(workout);
-    }
-
-    addPost(post: Post){
-        this.posts.push(post);
-    }
-
-    addFriend(friend: User){
-        this.friends.push(friend);
-    }
+export interface User {
+    userId: number;
+    username: string;
+    postID: Post[];
+    summary: Summary[];
+    friendID: number[];
 }
 
-export const users = ref<User[]>([new User("john Smith")]);
+export function getAll() {
+    return users
+}
+
+export function getOne(id: number){
+    return users.users.filter((user) => user.userId == id)
+}

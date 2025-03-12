@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "userId": 0,
+      "userName": "Admin",
+      "postID": [],
+      "summaryID": [],
+      "friendsID": []
+    },
+    {
+      "userName": "John Smith",
+      "posts": [],
+      "summaries": [
+        {
+          "name": "curls",
+          "note": "max heart rate: 130",
+          "type": "weight",
+          "sets": 5,
+          "reps": 3,
+          "weight": 120
+        },
+        { "name": "Run", "note": "new PB", "type": "cardio", "time": 15, "distance": 2 }
+      ],
+      "friends": [0]
+    }
+  ]
+}
