@@ -5,5 +5,5 @@ export interface Post {
     content: string;
     author: string;
     summary: Summary;
-    date: Date;
+    date: string;
 }

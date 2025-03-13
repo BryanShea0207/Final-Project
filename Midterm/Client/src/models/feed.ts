@@ -1,17 +1,21 @@
 import { currentUser } from "@/components/UserList.vue";
 import type { Post } from "./posts";
+import { getOne } from "./user";
 
 function makeFeed(): Post[] {
-    const friendsList = currentUser.value?.friends
+    const friendsList = currentUser.value?.friendsIds
     const feed: Post[] = [];
     if (friendsList){
-        friendsList.forEach(friend => {
-            feed.push(friend.posts);
+        friendsList.forEach(id => {
+            const friend = getOne(id)
+            if(friend.posts){
+                feed.concat(friend.posts)
+            }
         });
     }
     if(currentUser.value?.posts){
         feed.concat(currentUser.value?.posts);
     }
-    (feed as Post[]).sort((a , b) => a.date.getTime() - b.date.getTime()) 
+    (feed as Post[]).sort((a , b) => (new Date(a.date)).getTime() -  new Date(b.date).getTime()) 
     return feed
 }

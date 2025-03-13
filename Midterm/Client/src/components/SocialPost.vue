@@ -21,7 +21,7 @@ const summary = props.post.summary
       </div>
       <div class="content">
         <p class="title is-5">{{ post.content }}</p>
-        <p class="is-size-7">Posted on:{{ post.date }}</p>
+        <p class="is-size-7">Posted on:{{ new Date(post.date) }}</p>
         {{}}
       </div>
     </div>
