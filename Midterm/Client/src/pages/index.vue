@@ -15,5 +15,5 @@ const showUsers = ref(false)
       </div>
     </div>
   </section>
-  <!--<UserList v-if="showUsers" class="is-flex is-justify-content-center" />-->
+  <UserList v-if="showUsers" class="is-flex is-justify-content-center" />
 </template>
