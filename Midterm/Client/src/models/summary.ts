@@ -1,54 +1,19 @@
 import CardioSummary from "@/components/CardioSummary.vue";
 import { ref } from "vue";
 
-export abstract class Summary {
-    name = "";
-    note = "";
-    type = "";
-
-    constructor(name: string, note: string, type: string){
-        this.name = name;
-        this.note = note;
-        this.type = type;
-    }
+export interface Summary {
+  name: string;
+  note: string;
+  type: string
 }
 
-export class SummaryWeight extends Summary{
-  sets = 0;
-  reps = 0;
-  weight = 0;
-  
-
-  constructor(name: string, sets: number, reps: number, weight: number, note: string) {
-    super(name, note, "weight");
-    this.sets = sets;
-    this.reps = reps;
-    this.weight = weight;
-  }
-
-  getTotalWeight(): number {
-    return this.sets * this.reps * this.weight
-  }
+export interface SummaryWeight extends Summary {
+  sets: number;
+  reps: number;
+  weight: number;
 }
 
-export class SummaryCardio extends Summary{
-    time = 0;
-    distance = 0;
-
-    constructor(name: string, time: number, distance: number, note: string) {
-      super(name, note, "cardio");
-      this.time = time;
-      this.distance = distance;
-      
-    }
-
-    getPace(): String {
-      const pace = this.time / this.distance;
-      return Math.floor(pace / 60) + '\'' + pace % 60 + '\"';
-    }
+export interface SummaryCardio extends Summary {
+  time: number;
+  distance: number;
 }
-
-export const summaries = ref<Summary[]>([
-  new SummaryWeight("curls", 5, 3, 120, "max heart rate: 130"),
-  new SummaryCardio("Run", 15,2,"new PB")
-]);

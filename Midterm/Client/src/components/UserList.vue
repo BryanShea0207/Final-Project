@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { User, users } from '@/models/user'
+import type { User } from '@/models/user'
+import { getAll, getOne } from '@/models/user'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
@@ -9,8 +10,8 @@ const menuToggle = ref(false)
 <script lang="ts">
 export const currentUser = ref<User>()
 
-function setCurrentUser(index: number) {
-  currentUser.value = users.value[index]
+function setCurrentUser(id: number) {
+  currentUser.value = getOne(id)
 }
 </script>
 
@@ -25,18 +26,18 @@ function setCurrentUser(index: number) {
       <div class="dropdown-menu has-buttons are-large">
         <div
           class="dropdown-content is-align-content-center"
-          v-for="user in users"
+          v-for="user in getAll().users"
           v-show="menuToggle"
         >
           <div class="dropdown-item">
             <RouterLink
-              to="/Main"
-              @click="setCurrentUser(0)"
+              to="/main"
+              @click="setCurrentUser(user.userId)"
               class="button is-capitalized has-text-centered"
-              id="0"
+              id="{{ user.userId }}"
             >
-              {{ user.userName }}</RouterLink
-            >
+              {{ user.userName }}
+            </RouterLink>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Post, posts } from '@/models/posts'
+import type { Post } from '@/models/posts'
 import type { Summary } from '@/models/summary'
 import { ref, defineProps } from 'vue'
 import { currentUser } from './UserList.vue'
@@ -10,13 +10,14 @@ const sharing = ref(false)
 const props = defineProps<{ summary: Summary }>()
 
 function sharePost() {
-  posts.value.push(
-    new Post(
-      (document.getElementById('postContent') as HTMLInputElement).value,
-      'John Smith',
-      props.summary,
-    ),
-  )
+  if (currentUser?.value) {
+    currentUser.value.posts.push({
+      content: (document.getElementById('postContent') as HTMLInputElement).value,
+      author: 'John Smith',
+      summary: props.summary,
+      date: new Date(),
+    })
+  }
   ;(document.getElementById('postContent') as HTMLInputElement).value = ''
 }
 </script>

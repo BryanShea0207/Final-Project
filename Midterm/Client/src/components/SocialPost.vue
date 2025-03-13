@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Post } from '@/models/posts'
+import type { Post } from '@/models/posts'
 import CardioSummary from './CardioSummary.vue'
 import SummaryFooter from './SummaryFooter.vue'
 

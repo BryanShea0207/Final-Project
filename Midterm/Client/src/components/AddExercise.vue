@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { SummaryWeight, SummaryCardio } from '@/models/summary'
-import { summaries } from '@/models/summary'
+import type { SummaryWeight, SummaryCardio } from '@/models/summary'
 import { ref } from 'vue'
+import { currentUser } from './UserList.vue'
 
 const current = ref('weight')
 
@@ -152,13 +152,15 @@ function createSummaryWeight() {
   const notes = document.getElementById('weightNote') as HTMLInputElement
 
   if (weightName && sets && reps && pounds && notes) {
-    const summary = new SummaryWeight(
-      weightName.value, 
-      Number(sets.value), 
-      Number(reps.value), 
-      Number(pounds.value), 
-      notes.value);
-    summaries.value.push(summary)
+    const summary = {
+      name: weightName.value as string,
+      sets: Number(sets.value),
+      reps: Number(reps.value),
+      weight: Number(pounds.value),
+      note: notes.value,
+      type: 'weight'
+    }
+    currentUser.value?.summaries.push(summary)
     clearContent()
   }
 }
@@ -172,12 +174,13 @@ function createSummaryCardio() {
   const notes = document.getElementById('cardioNote') as HTMLInputElement
 
   if (cardioName && distance && time && notes) {
-    const summary = new SummaryCardio(
-      cardioName.value,  
-      Number(time[0].value) * 60 + Number(time[1].value),  
-      Number(distance.value),
-      notes.value);
-    summaries.value.push(summary)
+    const summary = {
+      name: cardioName.value,  
+      time: Number(time[0].value) * 60 + Number(time[1].value),  
+      distance: Number(distance.value),
+      note: notes.value
+    }
+    currentUser.value?.summaries.push(summary)
     clearContent()
   }
 }

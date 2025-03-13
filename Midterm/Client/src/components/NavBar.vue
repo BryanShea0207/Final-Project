@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { currentUser } from './UserList.vue'
-import { User } from '@/models/user'
 const isActive = ref(false)
 </script>
 
@@ -44,9 +43,7 @@ const isActive = ref(false)
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-info-dark">
-              <RouterLink to="/" @click="currentUser = new User('Signed Out')"
-                ><strong>Sign out</strong></RouterLink
-              >
+              <RouterLink to="/"><strong>Sign out</strong></RouterLink>
             </a>
           </div>
         </div>
