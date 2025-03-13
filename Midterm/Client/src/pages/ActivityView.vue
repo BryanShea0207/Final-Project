@@ -3,12 +3,12 @@ import WeightSummary from '@/components/WeightSummary.vue'
 import CardioSummary from '@/components/CardioSummary.vue'
 import SummaryFooter from '@/components/SummaryFooter.vue'
 import { ref } from 'vue'
-import { summaries, SummaryWeight } from '@/models/summary'
+import { currentUser } from '@/components/UserList.vue'
 </script>
 
 <template>
   <section class="section">
-    <div class="container" v-for="summary in summaries">
+    <div class="container" v-for="summary in currentUser?.summaries">
       <WeightSummary v-if="summary.type === 'weight'" :data="summary">
         <SummaryFooter :summary="summary" />
       </WeightSummary>

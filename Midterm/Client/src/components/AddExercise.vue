@@ -157,7 +157,8 @@ function createSummaryWeight() {
       sets: Number(sets.value),
       reps: Number(reps.value),
       weight: Number(pounds.value),
-      notes: notes.value
+      note: notes.value,
+      type: 'weight'
     }
     currentUser.value?.summaries.push(summary)
     clearContent()
