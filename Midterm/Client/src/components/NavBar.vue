@@ -42,8 +42,11 @@ const isActive = ref(false)
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
+            <a class="button is-info-dark" v-if="currentUser && currentUser?.userId == 0">
+              <RouterLink to="/admin">Admin</RouterLink>
+            </a>
             <a class="button is-info-dark">
-              <RouterLink to="/"><strong>Sign out</strong></RouterLink>
+              <RouterLink to="/" @click="currentUser = null"><strong>Sign out</strong></RouterLink>
             </a>
           </div>
         </div>
