@@ -5,12 +5,25 @@
       "userName": "Admin",
       "posts": [],
       "summaries": [],
-      "friends": [1]
+      "friendsIds": [1]
     },
     {
       "userId": 1,
       "userName": "John Smith",
-      "posts": [],
+      "posts": [
+        {
+          "content": "",
+          "author": "John Smith",
+          "summary": {
+            "name": "Run",
+            "note": "new PB",
+            "type": "cardio",
+            "time": 15,
+            "distance": 2
+          },
+          "date": {"2025-03-13T14:41:31.496Z"}
+        }
+      ],
       "summaries": [
         {
           "name": "curls",
@@ -22,7 +35,7 @@
         },
         { "name": "Run", "note": "new PB", "type": "cardio", "time": 15, "distance": 2 }
       ],
-      "friends": [0]
+      "friendsIds": [0]
     }
   ]
 }

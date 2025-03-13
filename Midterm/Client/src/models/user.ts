@@ -8,7 +8,7 @@ export interface User {
     userName: string;
     posts: any[];
     summaries: any[];
-    friends: any[];
+    friendsIds: any[];
 }
 
 export function getAll() {

@@ -20,6 +20,7 @@ import { currentUser } from '@/components/UserList.vue'
             <CardioSummary v-else :data="post.summary"> </CardioSummary>
           </SocialPost>
         </div>
+        {{ currentUser }}
       </div>
     </section>
   </main>
