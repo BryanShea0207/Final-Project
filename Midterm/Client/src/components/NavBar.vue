@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { currentUser } from './UserList.vue'
+import type { User } from '@/models/user'
 const isActive = ref(false)
+
+const emptyUser: User = {
+  userId: -1,
+  userName: 'Signed Out',
+  posts: [],
+  summaries: [],
+  friendsIds: [],
+}
 </script>
 
 <template>
@@ -46,7 +55,9 @@ const isActive = ref(false)
               <RouterLink to="/admin">Admin</RouterLink>
             </a>
             <a class="button is-info-dark">
-              <RouterLink to="/" @click="currentUser = null"><strong>Sign out</strong></RouterLink>
+              <RouterLink to="/" @click="currentUser = emptyUser"
+                ><strong>Sign out</strong></RouterLink
+              >
             </a>
           </div>
         </div>

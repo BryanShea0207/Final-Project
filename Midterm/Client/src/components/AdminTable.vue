@@ -5,7 +5,6 @@ import { getAll, getOne } from '@/models/user'
 <script lang="ts">
 function deleteAccount(userId: number) {
   getAll().users.splice(userId)
-  console.log(getAll())
 }
 </script>
 
@@ -23,7 +22,7 @@ function deleteAccount(userId: number) {
           <td>{{ user.userName }}</td>
           <td>
             <div class="buttons">
-              <a class="button is-danger" @click="deleteAccount(user.userId)">delete</a>
+              <button class="button is-danger" @click="deleteAccount(user.userId)">delete</button>
               <a class="button is-primary">View Posts</a>
               <a class="button is-primary">View Friends</a>
               <a class="button is-primary">View Summaries</a>
