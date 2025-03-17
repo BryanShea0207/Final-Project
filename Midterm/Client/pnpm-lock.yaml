@@ -14,6 +14,9 @@ importers:
       client:
         specifier: 'file:'
         version: file:(typescript@5.7.3)
+      pnpm:
+        specifier: ^10.6.4
+        version: 10.6.4
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
@@ -1385,6 +1388,11 @@ packages:
   pkg-types@2.1.0:
     resolution: {integrity: sha512-wmJwA+8ihJixSoHKxZJRBQG1oY8Yr9pGLzRmSsNms0iNWyHHAlZCa7mmKiFR10YPZuz/2k169JiS/inOjBCZ2A==}
 
+  pnpm@10.6.4:
+    resolution: {integrity: sha512-2j1xW/0iqaEF5ugIjPx4JmmTMt7WDEI7FOxhOhhfFgIgZwL/D+TEOMsVyXkIHOTLAlaONksVF0UDpjx6jipfbA==}
+    engines: {node: '>=18.12'}
+    hasBin: true
+
   postcss-selector-parser@6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
@@ -2517,6 +2525,7 @@ snapshots:
   client@file:(typescript@5.7.3):
     dependencies:
       '@fortawesome/fontawesome-free': 6.7.2
+      pnpm: 10.6.4
       vue: 3.5.13(typescript@5.7.3)
       vue-router: 4.5.0(vue@3.5.13(typescript@5.7.3))
     transitivePeerDependencies:
@@ -3045,6 +3054,8 @@ snapshots:
       confbox: 0.2.1
       exsolve: 1.0.2
       pathe: 2.0.3
+
+  pnpm@10.6.4: {}
 
   postcss-selector-parser@6.1.2:
     dependencies:
