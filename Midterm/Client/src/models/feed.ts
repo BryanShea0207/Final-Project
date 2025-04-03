@@ -1,6 +1,6 @@
 import { currentUser } from "@/components/UserList.vue";
 import type { Post } from "./posts";
-import { getOne } from "./user";
+import { getAll, getOne } from "./user";
 
 function makeFeed(): Post[] {
     const friendsList = currentUser.value?.friendsIds
