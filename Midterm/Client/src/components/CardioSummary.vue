@@ -17,7 +17,7 @@ const props = defineProps<{ data: Summary }>()
       </div>
       <div class="columns card-content">
         <div class="column">
-          <div class="container">
+          <div class="container" v-if="(data as SummaryCardio).distance">
             <h3 class="title is-3 has-text-centered">
               {{ (data as SummaryCardio).distance }} Miles
             </h3>
@@ -33,9 +33,9 @@ const props = defineProps<{ data: Summary }>()
           </div>
         </div>
         <div class="column">
-          <div class="container">
+          <div class="container" v-if="(data as SummaryCardio).distance">
             <h3 class="title is-3 has-text-centered">
-              {{ (data as SummaryCardio).time / (data as SummaryCardio).distance }}/ Mile
+              {{ (data as SummaryCardio).time / (data as SummaryCardio).distance }}' / Mile
             </h3>
             <p class="subtitle is-5 has-text-centered">Average Pace</p>
           </div>
