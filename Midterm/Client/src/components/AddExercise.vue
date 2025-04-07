@@ -2,6 +2,8 @@
 import type { SummaryWeight, SummaryCardio } from '@/models/summary'
 import { ref } from 'vue'
 import { currentUser } from './UserList.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 
 const current = ref('weight')
 
@@ -38,8 +40,9 @@ const showInputs = ref(false)
     <h1 class="title is-4">
       Add an Exercise
       <a role="button" class="button is-primary" @click="showInputs = !showInputs">
-        <span class="icon is-small">
-          <i class="fa-solid fa-arrows-up-down"></i>
+        <span class="icon">
+          <FontAwesomeIcon :icon="faCaretDown" v-if="!showInputs" />
+          <FontAwesomeIcon :icon="faCaretRight" v-if="showInputs" />
         </span>
       </a>
     </h1>

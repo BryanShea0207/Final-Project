@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import { currentUser } from './UserList.vue'
 import type { User } from '@/models/user'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faHouse, faPersonRunning } from '@fortawesome/free-solid-svg-icons'
 const isActive = ref(false)
 
 const emptyUser: User = {
@@ -42,10 +44,10 @@ const emptyUser: User = {
       :class="{ 'is-active': isActive }"
     >
       <div class="navbar-start">
-        <RouterLink to="/main" class="navbar-item has-text-info-dark-invert"> Home </RouterLink>
+        <RouterLink to="/main" class="navbar-item has-text-info-dark-invert"><FontAwesomeIcon :icon="faHouse" /> Home </RouterLink>
 
         <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert">
-          My Activity
+          <FontAwesomeIcon :icon="faPersonRunning"/> Activity
         </RouterLink>
       </div>
       <div class="navbar-end">
