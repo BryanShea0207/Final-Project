@@ -89,7 +89,7 @@ function viewSummeries(userId: number){
     </table>
   </div>
   <div class="container pt-5 " v-if="showSummeries" v-for="summary in getOne(selectedUser).summaries">
-    <WeightSummary v-if="summary.type === 'weight'" :data="summary" />
+    <WeightSummary v-if="summary.type === 'weight' || summary.type === 'strength'" :data="summary" />
     <CardioSummary v-else :data="summary" />
   </div>
 </template>
