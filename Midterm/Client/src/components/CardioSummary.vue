@@ -35,7 +35,7 @@ const props = defineProps<{ data: Summary }>()
         <div class="column">
           <div class="container" v-if="(data as SummaryCardio).distance">
             <h3 class="title is-3 has-text-centered">
-              {{ (data as SummaryCardio).time / (data as SummaryCardio).distance }}' / Mile
+              {{ ((data as SummaryCardio).time / (data as SummaryCardio).distance).toFixed(2) }}' / Mile
             </h3>
             <p class="subtitle is-5 has-text-centered">Average Pace</p>
           </div>
