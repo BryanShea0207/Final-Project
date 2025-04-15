@@ -1,0 +1,24 @@
+{
+  "name": "Final-Project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js -watch server",
+    "build:client": "npm run build --prefix client",
+    "build": "npm i --prefix client && npm run build:client"
+  },
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "in-class": "file:"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
