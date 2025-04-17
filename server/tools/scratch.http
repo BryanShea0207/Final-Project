@@ -1,0 +1,27 @@
+
+https://localhost:8000/user
+###
+
+GET http://localhost:8000/users/
+###
+
+GET http://localhost:8000/users/1
+###
+
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "username": "PlaceHolder"
+}
+###
+
+PATCH http://localhost:8000/users/1 
+Content-Type: application/json
+
+{
+    "friendsIds" : [6]
+}
+###
+
+DELETE http://localhost:8000/users/1

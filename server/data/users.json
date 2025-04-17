@@ -1,0 +1,307 @@
+{
+  "users": [
+    {
+      "userId": 0,
+      "userName": "Admin",
+      "posts": [],
+      "summaries": [],
+      "friendsIds": [
+        1
+      ]
+    },
+    {
+      "userId": 1,
+      "userName": "John Smith",
+      "posts": [
+        {
+          "content": "",
+          "author": "John Smith",
+          "summary": {
+            "name": "Run",
+            "note": "new PB",
+            "type": "cardio",
+            "time": 15,
+            "distance": 2
+          },
+          "date": "2025-03-13T14:41:31.496Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "curls",
+          "note": "max heart rate: 130",
+          "type": "weight",
+          "sets": 5,
+          "reps": 3,
+          "weight": 120
+        },
+        {
+          "name": "Run",
+          "note": "new PB",
+          "type": "cardio",
+          "time": 15,
+          "distance": 2
+        }
+      ],
+      "friendsIds": [
+        0
+      ]
+    },
+    {
+      "userId": 2,
+      "userName": "Sarah Miller",
+      "posts": [
+        {
+          "content": "Completed my first triathlon training session!",
+          "author": "Sarah Miller",
+          "summary": {
+            "name": "Triathlon Prep",
+            "note": "Swim-bike-run brick",
+            "type": "mixed",
+            "time": 142,
+            "distance": 15.2
+          },
+          "date": "2025-03-14T17:45:00.000Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "Deadlifts",
+          "note": "PR: 225lbs",
+          "type": "weight",
+          "sets": 5,
+          "reps": 3,
+          "weight": 225
+        }
+      ],
+      "friendsIds": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "userId": 3,
+      "userName": "Carlos Ruiz",
+      "posts": [
+        {
+          "content": "Boxing session with the squad",
+          "author": "Carlos Ruiz",
+          "summary": {
+            "name": "Boxing",
+            "note": "10 rounds sparring",
+            "type": "hiit",
+            "time": 90,
+            "distance": null
+          },
+          "date": "2025-03-15T20:30:00.000Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "Jump Rope",
+          "note": "500 skips unbroken",
+          "type": "cardio",
+          "time": 8,
+          "distance": null
+        }
+      ],
+      "friendsIds": [
+        1,
+        2,
+        4,
+        10
+      ]
+    },
+    {
+      "userId": 4,
+      "userName": "Priya Patel",
+      "posts": [],
+      "summaries": [],
+      "friendsIds": [
+        5,
+        8
+      ]
+    },
+    {
+      "userId": 5,
+      "userName": "Marcus Chen",
+      "posts": [
+        {
+          "content": "New climbing route conquered!",
+          "author": "Marcus Chen",
+          "summary": {
+            "name": "Rock Climbing",
+            "note": "V5 boulder problem",
+            "type": "strength",
+            "time": 120,
+            "distance": null
+          },
+          "date": "2025-03-15T18:20:00.000Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "Fingerboard Training",
+          "note": "7-second hangs",
+          "type": "strength",
+          "sets": 6,
+          "reps": 5,
+          "weight": null
+        }
+      ],
+      "friendsIds": [
+        3,
+        7
+      ]
+    },
+    {
+      "userId": 6,
+      "userName": "Emma Johnson",
+      "posts": [
+        {
+          "content": "Yoga flow was exactly what I needed today",
+          "author": "Emma Johnson",
+          "summary": {
+            "name": "Vinyasa Yoga",
+            "note": "Focused on hip openers",
+            "type": "flexibility",
+            "time": 60,
+            "distance": null
+          },
+          "date": "2025-03-14T09:15:00.000Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "Sun Salutations",
+          "note": "Morning routine",
+          "type": "flexibility",
+          "sets": 6,
+          "reps": 1,
+          "weight": null
+        }
+      ],
+      "friendsIds": [
+        1,
+        4,
+        8
+      ]
+    },
+    {
+      "userId": 7,
+      "userName": "Carlos Ruiz",
+      "posts": [],
+      "summaries": [
+        {
+          "name": "Barbell Rows",
+          "note": "3 second pause at top",
+          "type": "weight",
+          "sets": 4,
+          "reps": 8,
+          "weight": 185
+        }
+      ],
+      "friendsIds": [
+        1,
+        5,
+        9
+      ]
+    },
+    {
+      "userId": 8,
+      "userName": "Priya Patel",
+      "posts": [
+        {
+          "content": "10K trail run through the mountains",
+          "author": "Priya Patel",
+          "summary": {
+            "name": "Trail Running",
+            "note": "Technical terrain",
+            "type": "cardio",
+            "time": 52,
+            "distance": 6.2
+          },
+          "date": "2025-03-15T07:45:00.000Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "Hill Sprints",
+          "note": "8% grade",
+          "type": "cardio",
+          "time": 20,
+          "distance": 1.5
+        }
+      ],
+      "friendsIds": [
+        2,
+        6
+      ]
+    },
+    {
+      "userId": 9,
+      "userName": "Marcus Chen",
+      "posts": [
+        {
+          "content": "Sent my first V6 boulder problem!",
+          "author": "Marcus Chen",
+          "summary": {
+            "name": "Rock Climbing",
+            "note": "Crimpy overhang",
+            "type": "strength",
+            "time": 90,
+            "distance": null
+          },
+          "date": "2025-03-14T16:20:00.000Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "Hangboard Workout",
+          "note": "7mm edge",
+          "type": "strength",
+          "sets": 6,
+          "reps": 5,
+          "weight": null
+        }
+      ],
+      "friendsIds": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "userId": 10,
+      "userName": "Aisha Williams",
+      "posts": [
+        {
+          "content": "Swam 2 miles in the open water!",
+          "author": "Aisha Williams",
+          "summary": {
+            "name": "Open Water Swim",
+            "note": "Choppy conditions",
+            "type": "cardio",
+            "time": 68,
+            "distance": 2
+          },
+          "date": "2025-03-15T11:30:00.000Z"
+        }
+      ],
+      "summaries": [
+        {
+          "name": "Pool Intervals",
+          "note": "100m sprints",
+          "type": "cardio",
+          "time": 45,
+          "distance": 1.8
+        }
+      ],
+      "friendsIds": [
+        4,
+        8
+      ]
+    }
+  ]
+}
