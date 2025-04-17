@@ -19,9 +19,9 @@ router
 
     .post('/', (req,res,next) =>{
         const newUser = req.body
-
+        console.log(newUser)
         model.create(newUser).then((data) => {
-            res.send(data)
+            res.status(201).send(data)
         }).catch(next)
     })
 

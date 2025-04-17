@@ -5,14 +5,14 @@ https://localhost:8000/user
 GET http://localhost:8000/users/
 ###
 
-GET http://localhost:8000/users/1
+GET http://localhost:8000/users/5
 ###
 
-POST http://localhost:8000/users
+POST http://localhost:8000/users/
 Content-Type: application/json
 
 {
-    "username": "PlaceHolder"
+    "fristName": "PlaceHolder"
 }
 ###
 
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 ###
 
-DELETE http://localhost:8000/users/1
+DELETE http://localhost:8000/users/6

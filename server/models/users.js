@@ -11,9 +11,9 @@ async function get(id) {
 }
 
 async function create(user) {
-    console.log(user)
+    
     const newUser = {
-        userId: data.users.length+1,
+        id: data.users.length+1,
         ...user
     }
     data.users.push(newUser)
@@ -31,7 +31,10 @@ async function update(id, values) {
 }
 
 async function remove(id) {
-    return data.users.splice(id,1)
+    const user = data.users.find((user) => user.userId == id)
+    data.users.splice(
+        data.users.indexOf(user), 1)
+    return user
 }
 
 module.exports = {
