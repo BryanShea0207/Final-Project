@@ -6,7 +6,7 @@ router
     .get('/', (req,res,next) => {
         
         model.getAll().then((data) => {
-            res.send(data)
+            res.send(data.items)
         }).catch(next)
     })
 
@@ -15,6 +15,15 @@ router
         model.get(id).then((data) => {
             res.send(data)
         }).catch(next)
+    })
+
+    .get('/search/:query', (req, res, next) => {
+        const { query } = req.params
+        const { limit, offset, sort, order } = req.query
+        model.search(query, parseNum(limit), parseNum(offset), sort, order).then((data) => {
+            res.send(data)
+        }).catch(next)
+
     })
 
     .post('/', (req,res,next) =>{
@@ -38,4 +47,15 @@ router
             res.send(data)
         }).catch(next)
     })
+
+    .post('/seed', (req,res,next) => {
+        model.seed().then((message) => {
+            res.send(message)
+        }).catch(next)
+    })
 module.exports = router
+
+function parseNum(num){
+    //if num is a number return number else return undefine
+    num ? +num : undefined
+}

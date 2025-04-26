@@ -8,11 +8,16 @@ GET http://localhost:8000/users/
 GET http://localhost:8000/users/6
 ###
 
+GET http://localhost:8000/users/search/Gonzalez?limit=10&sort=first_Name&order=asc
+###
+
 POST http://localhost:8000/users/
 Content-Type: application/json
 
 {
-    "fristName": "PlaceHolder"
+    "first_Name": "Bryan",
+    "last_Name": "Shea",
+    "age": 25
 }
 ###
 
@@ -20,11 +25,14 @@ PATCH http://localhost:8000/users/1
 Content-Type: application/json
 
 {
-    "friendsIds" : [6]
+    "friends_Ids" : [7]
 }
 ###
 
-DELETE http://localhost:8000/users/6
+DELETE http://localhost:8000/users/33
+###
+
+POST http://localhost:8000/users/seed
 
 ###Summaries test
 
