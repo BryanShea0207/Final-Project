@@ -1,4 +1,4 @@
-const model = require('../models/users')
+const model = require('../models/posts')
 const express = require('express') 
 const router = express.Router()
 
@@ -18,8 +18,8 @@ router
     })
 
     .post('/', (req,res,next) =>{
-        const newUser = req.body
-        model.create(newUser).then((data) => {
+        const newPost = req.body
+        model.create(newPost).then((data) => {
             res.status(201).send(data)
         }).catch(next)
     })

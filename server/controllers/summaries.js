@@ -1,4 +1,4 @@
-const model = require('../models/users')
+const model = require('../models/summaries')
 const express = require('express') 
 const router = express.Router()
 
@@ -18,8 +18,8 @@ router
     })
 
     .post('/', (req,res,next) =>{
-        const newUser = req.body
-        model.create(newUser).then((data) => {
+        const newSummary = req.body
+        model.create(newSummary).then((data) => {
             res.status(201).send(data)
         }).catch(next)
     })

@@ -5,7 +5,7 @@ https://localhost:8000/user
 GET http://localhost:8000/users/
 ###
 
-GET http://localhost:8000/users/5
+GET http://localhost:8000/users/6
 ###
 
 POST http://localhost:8000/users/
@@ -25,3 +25,63 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8000/users/6
+
+###Summaries test
+
+GET http://localhost:8000/summaries/
+###
+
+GET http://localhost:8000/summaries/10
+###
+
+POST http://localhost:8000/summaries/
+Content-Type: application/json
+
+{
+    "user_id": 15,
+    "name": "Push ups",
+    "note": "nightly routine",
+    "type": "weight",
+    "sets": 10,
+    "reps": 5
+}
+###
+
+PATCH http://localhost:8000/summaries/20
+Content-Type: application/json
+
+{
+    "sets": 25
+}
+###
+
+DELETE http://localhost:8000/summaries/10
+
+### Posts test
+
+GET http://localhost:8000/posts/
+###
+
+GET http://localhost:8000/posts/10
+###
+
+POST http://localhost:8000/posts/
+Content-Type: application/json
+
+{
+    "user_id": 20,
+    "summary_id": 10,
+    "content": "good time today",
+    "date": "2025-04-25"
+}
+###
+
+PATCH http://localhost:8000/posts/10
+Content-Type: application/json
+
+{
+    "date": "2030-05-05"
+}
+###
+
+DELETE http://localhost:8000/posts/10

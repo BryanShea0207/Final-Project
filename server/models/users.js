@@ -7,33 +7,33 @@ async function getAll() {
 }
 
 async function get(id) {
-    return data.users.find((user) => user.userId == id)
+    return data.items.find((user) => user.id == id)
 }
 
 async function create(user) {
     
     const newUser = {
-        id: data.users.length+1,
+        id: data.items.length+1,
         ...user
     }
-    data.users.push(newUser)
+    data.items.push(newUser)
     return(newUser)
 }
 
 async function update(id, values) {
-    const current = data.users.find((user) => user.userId == id)
+    const current = data.items.find((user) => user.id == id)
     const updatedItem = {
         ...current,
         ...values
     }
-    data.users[id] = updatedItem
+    data.items[id] = updatedItem
     return updatedItem
 }
 
 async function remove(id) {
-    const user = data.users.find((user) => user.userId == id)
-    data.users.splice(
-        data.users.indexOf(user), 1)
+    const user = data.items.find((user) => user.id == id)
+    data.items.splice(
+        data.items.indexOf(user), 1)
     return user
 }
 
