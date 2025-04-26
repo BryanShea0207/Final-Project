@@ -65,6 +65,8 @@ Content-Type: application/json
 
 DELETE http://localhost:8000/summaries/10
 
+POST http://localhost:8000/summaries/seed
+
 ### Posts test
 
 GET http://localhost:8000/posts/
@@ -93,3 +95,6 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8000/posts/10
+###
+
+POST http://localhost:8000/posts/seed

@@ -38,4 +38,10 @@ router
             res.send(data)
         }).catch(next)
     })
+
+    .post('/seed', (req,res,next) => {
+        model.seed().then((data) => {
+            res.send(data)
+        }).catch(next)
+    })
 module.exports = router

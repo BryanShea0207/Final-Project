@@ -1,6 +1,7 @@
 const data = require("../data/summaries.json")
-
+const { connect } = require('./supabase')
 const isAdmin = true;
+const TABLE_NAME = 'Summaries'
 
 async function getAll() {
     return data
@@ -37,10 +38,22 @@ async function remove(id) {
     return summary
 }
 
+async function seed() {
+    for(const item of data){
+
+        const { data: newItem, error} = await connect().from(TABLE_NAME).insert(item).select('*')
+        if(error){
+            throw error
+        }
+    }
+    return {message: "items seeded in DB"}
+}
+
 module.exports = {
     getAll,
     get,
     create,
     update,
-    remove
+    remove,
+    seed
 }
