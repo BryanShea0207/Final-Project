@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 ###
 
-PATCH http://localhost:8000/users/1 
+PATCH http://localhost:8000/users/5
 Content-Type: application/json
 
 {
@@ -33,6 +33,9 @@ DELETE http://localhost:8000/users/33
 ###
 
 POST http://localhost:8000/users/seed
+###
+
+PATCH  http://localhost:8000/users/7/addFriend/10
 
 ###Summaries test
 
@@ -42,11 +45,14 @@ GET http://localhost:8000/summaries/
 GET http://localhost:8000/summaries/10
 ###
 
+GET http://localhost:8000/summaries/search/10?limit=10
+###
+
 POST http://localhost:8000/summaries/
 Content-Type: application/json
 
 {
-    "user_id": 15,
+    "user_id": 30,
     "name": "Push ups",
     "note": "nightly routine",
     "type": "weight",
@@ -64,6 +70,7 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8000/summaries/10
+###
 
 POST http://localhost:8000/summaries/seed
 

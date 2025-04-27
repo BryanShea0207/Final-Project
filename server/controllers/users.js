@@ -53,6 +53,15 @@ router
             res.send(message)
         }).catch(next)
     })
+
+    .patch('/:id/addFriend/:friendId', (req,res,next) => {
+        const {id, friendId } = req.params
+    
+        model.addFriend(id, friendId).then((data) => {
+            res.send(data)
+        }).catch(next)
+    })
+
 module.exports = router
 
 function parseNum(num){

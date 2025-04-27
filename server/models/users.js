@@ -84,6 +84,22 @@ async function seed() {
     return {message: "items sent to DB"}
 }
 
+async function addFriend(id, friendId) {
+
+    const {data: item, error} = await connect().from(TABLE_NAME).select('*').eq("user_id", id)
+    if(error){
+        throw error
+    }
+
+    item[0].friends_Ids.push(friendId)
+
+    const {newData: newItem, error2} = await connect().from(TABLE_NAME).update(item).eq("user_id", id).select('*')
+    if(error2){
+        throw error2
+    }
+    return item[0]
+}
+
 function mapToDB(item){
     return {
         user_id: item.id,
@@ -105,5 +121,6 @@ module.exports = {
     create,
     update,
     remove,
-    seed
+    seed,
+    addFriend
 }
