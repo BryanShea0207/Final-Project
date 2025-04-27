@@ -1,41 +1,69 @@
 const data = require("../data/summaries.json")
 const { connect } = require('./supabase')
 const isAdmin = true;
+
 const TABLE_NAME = 'Summaries'
 
-async function getAll() {
-    return data
+const BaseQuery = () => connect().from(TABLE_NAME).select('*')
+
+async function getAll(limit = 30, offset = 0, sort='id', order = 'asc') {
+    const list = await BaseQuery()
+        .order(sort , {ascending: order === 'asc'})
+        .range(offset, offset + limit - 1)
+    if(list.error){
+        throw list.error
+    }
+    return {
+        items: list.data,
+        total: list.count
+    }
 }
 
 async function get(id) {
-    return data.find((summary) => summary.id == id)
+    const { data: item, error} = await connect().from(TABLE_NAME)
+            .select('*').eq("id", id)
+        if(error){
+            throw error
+        }
+        return item[0]
 }
 
-async function create(summary) {
-    
-    const newSummary = {
-        id: data.length+1,
-        ...summary
+async function search(query, limit = 30, offset = 0, sort = 'id', order = 'asc'){
+    const { data: items, error, count } = await BaseQuery()
+    .or(`user_id.eq.${query}`)//type.ilike.%${query}%
+    .order(sort, { ascending: order === 'asc' })
+    .range(offset, offset + limit -1)
+    if (error) {
+        throw error
     }
-    data.push(newSummary)
-    return(newSummary)
+    return {
+        items,
+        total: count
+    }
+} 
+
+async function create(summary) {
+    const {data: item, error} = await connect().from(TABLE_NAME).insert(summary).select('*')
+    if(error){
+        throw error
+    }
+    return item
 }
 
 async function update(id, values) {
-    const current = data.find((summary) => summary.id == id)
-    const updatedItem = {
-        ...current,
-        ...values
+    const {data: item, error} = await connect().from(TABLE_NAME).update(values).eq("id",id).select('*')
+    if(error){
+        throw error
     }
-    data[id-1] = updatedItem
-    return updatedItem
+    return item
 }
 
 async function remove(id) {
-    const summary = data.find((summary) => summary.id == id)
-    data.splice(
-        data.indexOf(summary), 1)
-    return summary
+    const {data: item, error} = await connect().from(TABLE_NAME).delete().eq("id",id).select('*')
+    if(error){
+        throw error
+    }
+    return item
 }
 
 async function seed() {
@@ -52,6 +80,7 @@ async function seed() {
 module.exports = {
     getAll,
     get,
+    search,
     create,
     update,
     remove,
