@@ -82,12 +82,15 @@ GET http://localhost:8000/posts/
 GET http://localhost:8000/posts/10
 ###
 
+GET http://localhost:8000/posts/search/4?
+###
+
 POST http://localhost:8000/posts/
 Content-Type: application/json
 
 {
-    "user_id": 20,
-    "summary_id": 10,
+    "user_Id": 20,
+    "summary_Id": 11,
     "content": "good time today",
     "date": "2025-04-25"
 }
@@ -101,7 +104,7 @@ Content-Type: application/json
 }
 ###
 
-DELETE http://localhost:8000/posts/10
+DELETE http://localhost:8000/posts/52
 ###
 
 POST http://localhost:8000/posts/seed
