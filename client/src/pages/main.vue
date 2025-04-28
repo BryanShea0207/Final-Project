@@ -6,16 +6,26 @@ import SocialPost from '@/components/SocialPost.vue'
 import { currentUser } from '@/components/UserList.vue'
 import FriendsList from '@/components/FriendsList.vue'
 import { ref } from 'vue'
-import type { Post } from '@/models/posts'
-import { getOne } from '@/models/user'
+import { getPostByUser, type Post } from '@/models/posts'
+//import { getOne } from '@/models/user'
+import { useRoute } from 'vue-router'
+import { getOne, type Summary } from '@/models/summary'
 
-const posts = ref<Post[]>([]);
+const route = useRoute('/main/[id]')
 
-let ids = currentUser.value?.friendsIds;
-ids?.forEach(friend => {
-  getOne(friend).posts?.forEach(post => {posts.value.push(post)});
-});
-posts.value.sort((a,b) => Date.parse(b.date)-Date.parse(a.date))
+const posts = ref<Map<Post, Summary>>();
+let userPosts = new Map<Post, Summary>();
+if(currentUser.value?.user_id){
+  const id = route.params.id ? +route.params.id : undefined
+  getPostByUser(id as number).then((list) => {
+    list.forEach(element => {
+      let summary = {} as Summary
+      getOne(element.summary_Id).then((result) => {summary = result})
+      userPosts.set(element, summary)
+    });
+  })
+  console.log(posts.value)
+}
 </script>
 
 <template>
@@ -25,7 +35,7 @@ posts.value.sort((a,b) => Date.parse(b.date)-Date.parse(a.date))
         <AddExercise />
       </div>
       <div class="column is-half">
-        <div class="container py-3" v-for="post in posts">
+        <div class="container py-3" v-if="posts?.entries" v-for="post in posts.entries">
           <SocialPost :post="post">
             <WeightSummary v-if="post.summary.type === 'weight'" :data="post.summary">
             </WeightSummary>

@@ -2,19 +2,25 @@ import { ref } from "vue";
 import type { Post } from "./posts";
 import type { Summary } from "./summary";
 import users from "@/data/users.json";
+import { api } from './session'
 
 export interface User {
-    userId: number;
-    userName: string;
-    posts: any[];
-    summaries: any[];
-    friendsIds: any[];
+    user_id: number;
+    first_Name: string;
+    last_Name: string;
+    email: string;
+    phone: string;
+    age: number;
+    birth_Date: Date;
+    friends_Ids: [];
+    gender: string;
+    role: string;
 }
 
-export function getAll() {
-    return users
+export async function getAll(): Promise<User[]> {
+    return api(`users`)
 }
 
-export function getOne(id: number){
-    return users.users[id]
+export function getOne(id: number): Promise<User>{
+    return api(`users/${id}`)
 }

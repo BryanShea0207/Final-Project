@@ -7,11 +7,16 @@ import { faHouse, faPersonRunning } from '@fortawesome/free-solid-svg-icons'
 const isActive = ref(false)
 
 const emptyUser: User = {
-  userId: -1,
-  userName: 'Signed Out',
-  posts: [],
-  summaries: [],
-  friendsIds: [],
+  user_id: -1,
+  first_Name: "Signed",
+  last_Name: "Out",
+  age: -1,
+  birth_Date: new Date(),
+  email: "",
+  gender: "",
+  role: "",
+  phone: "",
+  friends_Ids: []
 }
 </script>
 
@@ -53,7 +58,7 @@ const emptyUser: User = {
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-info-dark" v-if="currentUser && currentUser?.userId == 0">
+            <a class="button is-info-dark" v-if="currentUser && currentUser?.user_id == 0">
               <RouterLink to="/admin">Admin</RouterLink>
             </a>
             <a class="button is-info-dark">

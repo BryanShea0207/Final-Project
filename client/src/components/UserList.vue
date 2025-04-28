@@ -5,13 +5,26 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const menuToggle = ref(false)
+
+
+getUsers()
 </script>
 
 <script lang="ts">
 export const currentUser = ref<User>()
+const users = ref<User[]>() 
 
-function setCurrentUser(id: number) {
-  currentUser.value = getOne(id)
+async function setCurrentUser(id: number) {
+  console.log(id)
+  currentUser.value = await getOne(id)
+}
+
+async function getUsers(){
+  getAll().then((list) => {
+    console.log(list)
+    if(list)
+    users.value = list
+  })
 }
 </script>
 
@@ -26,17 +39,17 @@ function setCurrentUser(id: number) {
       <div class="dropdown-menu has-buttons are-large">
         <div
           class="dropdown-content is-align-content-center"
-          v-for="user in getAll().users"
+          v-for="user in users"
           v-show="menuToggle"
         >
           <div class="dropdown-item">
             <RouterLink
-              to="/main"
-              @click="setCurrentUser(user.userId)"
+              :to="`/main/${user.user_id}`"
+              @click="setCurrentUser(user.user_id)"
               class="button is-capitalized has-text-centered"
               id="{{ user.userId }}"
             >
-              {{ user.userName }}
+              {{ user.first_Name + " " + user.last_Name}}
             </RouterLink>
           </div>
         </div>
