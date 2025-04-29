@@ -5,7 +5,7 @@ const postControler = require('./controllers/posts')
 
 require('dotenv').config()
 
-const PORT = process.env.PORT ?? 8000
+const PORT = process.env.PORT ?? 10000
 
 const app = express()
 

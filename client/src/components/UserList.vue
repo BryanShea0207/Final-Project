@@ -1,29 +1,29 @@
 <script setup lang="ts">
 import type { User } from '@/models/user'
 import { getAll, getOne } from '@/models/user'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const menuToggle = ref(false)
+const users = ref<User[]>() 
 
+const fetchData = async () => {
+  getAll().then((list) => {
+    users.value = list;
+  })
+}
 
-getUsers()
+onMounted(fetchData)
 </script>
 
 <script lang="ts">
 export const currentUser = ref<User>()
-const users = ref<User[]>() 
+
 
 async function setCurrentUser(user: User ) {
   currentUser.value = user
 }
 
-async function getUsers(){
-  getAll().then((list) => {
-    if(list)
-    users.value = list
-  })
-}
 </script>
 
 <template>
