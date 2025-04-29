@@ -21,6 +21,6 @@ export async function getAll(): Promise<User[]> {
     return api(`users`)
 }
 
-export function getOne(id: number): Promise<User>{
+export async function getOne(id: number): Promise<User>{
     return api(`users/${id}`)
 }
