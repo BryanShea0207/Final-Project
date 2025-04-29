@@ -7,7 +7,8 @@ export function rest<T>(url: string): Promise<T> {
 export function api<T>(action: string): Promise<T> {
     console.log("calling rest() on " + action)
     return rest<T>(`${API_ROOT}${action}`).then((item) => {
-        console.log("rest() called on " + action)
+        console.log("rest() called on " + API_ROOT + action)
+        console.log(item)
         return item
     })
 }
