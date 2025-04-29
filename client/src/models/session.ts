@@ -5,16 +5,15 @@ import * as myPost from './myPost'
 import * as myDelete from './myDelete'
 
 export function api<T>(action: string): Promise<T> {
-  console.log("fetching:" + action)
-  return myFetch.api<T>(action)
+  return myFetch.api<T>('/' + action)
 }
 
 export function post<T>(action: string, item: T): Promise<T> {
-  return myPost.api<T>(action, item)
+  return myPost.api<T>('/' +action, item)
 }
 
 export function remove<T>(action:string): Promise<T>{
-  return myDelete.api<T>(action)
+  return myDelete.api<T>('/' +action)
 }
 
 const session = ref({
