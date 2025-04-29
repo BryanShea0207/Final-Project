@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { api, post } from "./session";
 
 export interface Summary {
-  id: number;
+  id?: number;
   name: string;
   note: string;
   type: string;

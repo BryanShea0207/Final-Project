@@ -154,7 +154,7 @@ function createSummaryWeight() {
   const reps = document.getElementById('reps') as HTMLInputElement
   const notes = document.getElementById('weightNote') as HTMLInputElement
 
-  if (weightName && sets && reps && pounds && notes) {
+  if (weightName && sets && reps && pounds && notes && currentUser.value) {
     const summary = {
       name: weightName.value as string,
       sets: Number(sets.value),
@@ -162,7 +162,7 @@ function createSummaryWeight() {
       weight: Number(pounds.value),
       note: notes.value,
       type: 'weight',
-      user_id: currentUser.value?.user_id 
+      user_id: currentUser.value.user_id 
     }
     PostSummary(summary)
     clearContent()
@@ -177,14 +177,14 @@ function createSummaryCardio() {
     document.getElementById('minute') as HTMLInputElement]
   const notes = document.getElementById('cardioNote') as HTMLInputElement
 
-  if (cardioName && distance && time && notes) {
+  if (cardioName && distance && time && notes && currentUser.value) {
     const summary = {
       name: cardioName.value,  
       time: (Number(time[0].value) * 60 + Number(time[1].value)) as number,  
       distance: Number(distance.value) as number,
       note: notes.value,
       type: 'cardio',
-      user_id: currentUser.value?.user_id
+      user_id: currentUser.value.user_id
     }
     PostSummary(summary)
     clearContent()

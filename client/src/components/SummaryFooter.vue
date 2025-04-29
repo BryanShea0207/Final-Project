@@ -14,7 +14,7 @@ function sharePost() {
     let newPost: Post = {
       content: (document.getElementById('postContent') as HTMLInputElement).value,
       user_Id: currentUser.value.user_id,
-      summary_Id: props.summary.id,
+      summary_Id: props.summary.id || 0,
       date: new Date()
     }
 
