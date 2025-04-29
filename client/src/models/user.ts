@@ -18,7 +18,7 @@ export interface User {
 }
 
 export async function getAll(): Promise<User[]> {
-    let str = 'users'
+    let str = '/users'
     console.log("getting all " + str)
 
     return api(str)
