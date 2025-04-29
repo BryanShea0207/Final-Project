@@ -5,6 +5,7 @@ import * as myPost from './myPost'
 import * as myDelete from './myDelete'
 
 export function api<T>(action: string): Promise<T> {
+  console.log("fetching:" + action)
   return myFetch.api<T>(action)
 }
 
