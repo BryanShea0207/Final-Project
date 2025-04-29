@@ -1,9 +1,14 @@
 import { ref } from 'vue'
 import * as myFetch from './myFetch'
 import { getOne, type User } from './user'
+import * as myPost from './myPost'
 
 export function api<T>(action: string): Promise<T> {
   return myFetch.api<T>(action)
+}
+
+export function post<T>(action: string, item: T): Promise<T> {
+  return myPost.api<T>(action, item)
 }
 
 const session = ref({

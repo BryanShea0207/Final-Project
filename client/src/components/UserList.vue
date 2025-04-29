@@ -14,14 +14,12 @@ getUsers()
 export const currentUser = ref<User>()
 const users = ref<User[]>() 
 
-async function setCurrentUser(id: number) {
-  console.log(id)
-  currentUser.value = await getOne(id)
+async function setCurrentUser(user: User ) {
+  currentUser.value = user
 }
 
 async function getUsers(){
   getAll().then((list) => {
-    console.log(list)
     if(list)
     users.value = list
   })
@@ -44,8 +42,8 @@ async function getUsers(){
         >
           <div class="dropdown-item">
             <RouterLink
-              :to="`/main/${user.user_id}`"
-              @click="setCurrentUser(user.user_id)"
+              :to="`/Home`"
+              @click="setCurrentUser(user)"
               class="button is-capitalized has-text-centered"
               id="{{ user.userId }}"
             >

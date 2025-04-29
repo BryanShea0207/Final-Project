@@ -1,23 +1,41 @@
 <script setup lang="ts">
 import type { Post } from '@/models/posts'
 import CardioSummary from './CardioSummary.vue'
+import WeightSummary from './WeightSummary.vue';
 import SummaryFooter from './SummaryFooter.vue'
+import { getOne, type User } from '@/models/user';
+import { getOneSummary, type Summary } from '@/models/summary';
+import { ref, type Ref } from 'vue';
 
 const props = defineProps<{ post: Post }>()
+const loaded = ref(false)
+const postUser = ref<User>();
+ getOne(props.post.user_Id).then((user) => {postUser.value = user})
 
-const summary = props.post.summary
+const summary = ref<Summary>()
+getSummary(summary, props.post.summary_Id).then(() => {
+  loaded.value = true;
+})
+</script>
+
+<script lang="ts">
+async function getSummary(summary: Ref<Summary | undefined, Summary | undefined> ,id: number){
+  summary.value = await getOneSummary(id)
+}
 </script>
 
 <template>
-  <div class="card has-background-grey-darker mx-0">
+  <div class="card has-background-grey-darker mx-0" v-if="loaded && postUser">
     <div class="card-content mx-0 px-0">
-      <div class="container px-0 mx-0">
-        <slot></slot>
+      <div v-if="summary" class="container px-0 mx-0">
+        <WeightSummary v-if="summary?.type === 'weight'" :data="summary">
+        </WeightSummary>
+        <CardioSummary v-else :data="summary"> </CardioSummary>
       </div>
     </div>
     <div class="card-content">
       <div class="media">
-        <p class="title is-3">{{ post.author }}</p>
+        <p class="title is-3">{{ postUser.first_Name + " " + postUser.last_Name }}</p>
       </div>
       <div class="content">
         <p class="title is-5">{{ post.content }}</p>

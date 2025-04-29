@@ -49,13 +49,16 @@ const emptyUser: User = {
       :class="{ 'is-active': isActive }"
     >
       <div class="navbar-start">
-        <RouterLink to="/main" class="navbar-item has-text-info-dark-invert"><FontAwesomeIcon :icon="faHouse" /> Home </RouterLink>
+        <RouterLink to="/Home" class="navbar-item has-text-info-dark-invert"><FontAwesomeIcon :icon="faHouse" /> Home </RouterLink>
 
         <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert">
           <FontAwesomeIcon :icon="faPersonRunning"/> Activity
         </RouterLink>
       </div>
       <div class="navbar-end">
+        <div class="navbar-item">
+          <p>{{ currentUser?.first_Name + " " + currentUser?.last_Name }}</p>
+        </div>
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-info-dark" v-if="currentUser && currentUser?.user_id == 0">

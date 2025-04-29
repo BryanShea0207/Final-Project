@@ -1,6 +1,6 @@
 import CardioSummary from "@/components/CardioSummary.vue";
 import { ref } from "vue";
-import { api } from "./session";
+import { api, post } from "./session";
 
 export interface Summary {
   name: string;
@@ -19,6 +19,11 @@ export interface SummaryCardio extends Summary {
   distance: number;
 }
 
-export async function getOne(id:number): Promise<Summary> {
-  return api(`/summaries/${id}`)
+export async function getOneSummary(id:number): Promise<Summary> {
+  return api(`summaries/${id}`)
 } 
+
+export async function PostSummary(summary:Summary) {
+  console.log("Trying to post new summary")
+  return post('summaries', summary)
+}

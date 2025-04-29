@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SummaryWeight, SummaryCardio } from '@/models/summary'
+import { type SummaryWeight, type SummaryCardio, PostSummary } from '@/models/summary'
 import { ref } from 'vue'
 import { currentUser } from './UserList.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -161,9 +161,10 @@ function createSummaryWeight() {
       reps: Number(reps.value),
       weight: Number(pounds.value),
       note: notes.value,
-      type: 'weight'
+      type: 'weight',
+      user_id: currentUser.value?.user_id 
     }
-    currentUser.value?.summaries.push(summary)
+    PostSummary(summary)
     clearContent()
   }
 }
@@ -179,11 +180,13 @@ function createSummaryCardio() {
   if (cardioName && distance && time && notes) {
     const summary = {
       name: cardioName.value,  
-      time: Number(time[0].value) * 60 + Number(time[1].value),  
-      distance: Number(distance.value),
-      note: notes.value
+      time: (Number(time[0].value) * 60 + Number(time[1].value)) as number,  
+      distance: Number(distance.value) as number,
+      note: notes.value,
+      type: 'cardio',
+      user_id: currentUser.value?.user_id
     }
-    currentUser.value?.summaries.push(summary)
+    PostSummary(summary)
     clearContent()
   }
 }

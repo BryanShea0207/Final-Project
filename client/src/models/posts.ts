@@ -21,5 +21,5 @@ export async function getOne(id: number): Promise<Post>{
 }
 
 export async function getPostByUser(id:number): Promise<Post[]> {
-    return api('/posts/search/${id}?')
+    return api(`posts/search/${id}?`)
 }
