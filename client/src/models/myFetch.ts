@@ -1,7 +1,6 @@
-export const API_ROOT = (import.meta.env.VITE_API_ROOT as string)
+export const API_ROOT = (import.meta.env.VITE_API_ROOT as string) || "http://localhost:10000"
 
 export function rest<T>(url: string): Promise<T> {
-    console.log("fetching url" + url)
     return fetch(url).then((x) => x.json())
 }
   
