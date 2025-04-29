@@ -18,7 +18,7 @@ export interface User {
 }
 
 export async function getAll(): Promise<User[]> {
-    return api("'users")
+    return api("users")
 }
 
 export async function getOne(id: number): Promise<User>{
