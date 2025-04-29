@@ -111,3 +111,5 @@ POST http://localhost:8000/posts/seed
 ###
 
 ###Vue request tests
+
+GET http://localhost:8000/summaries/search/5?

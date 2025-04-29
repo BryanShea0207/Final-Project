@@ -1,11 +1,11 @@
 import { ref } from 'vue';
 import type { Summary, SummaryWeight } from './summary';
-import { api } from './session';
+import { api, post as upload } from './session';
 
 
 
 export interface Post {
-    id: number;
+    id?: number;
     content: string;
     date: Date;
     summary_Id: number;
@@ -22,4 +22,9 @@ export async function getOne(id: number): Promise<Post>{
 
 export async function getPostByUser(id:number): Promise<Post[]> {
     return api(`posts/search/${id}?`)
+}
+
+export async function postPost(post:Post) {
+  console.log("Trying to post new post")
+  return upload('posts', post)
 }
