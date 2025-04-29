@@ -24,15 +24,33 @@ onMounted(fetchData)
 
 <script lang="ts">
 async function getPosts(): Promise<Post[]>{
-    let userPosts: Post[] = []
+    let friendsPosts: Post[] = []
     if(currentUser.value){
+        for(let id of currentUser.value.friends_Ids){
+            const idPosts = await getPostByUser(id)
+            
+            idPosts.forEach((post) => {
+                friendsPosts.push(post)
+            })
+        }
+        console.log(friendsPosts)
+
         const userId = currentUser.value.user_id
         console.log("getting posts for user_ID " + userId)
         const posts = await getPostByUser(userId)
-        console.log(posts)
-        userPosts = posts
+        posts.forEach((post) => {
+            friendsPosts.push(post)
+        })
+        console.log(friendsPosts)
     }
-    return userPosts
+    friendsPosts.sort((a,b) => {
+        const dateA = new Date(a.date)
+        const dateB = new Date(b.date)
+
+        return dateB.getTime() - dateA.getTime()
+    })
+    
+    return friendsPosts
 }
 </script>
 
