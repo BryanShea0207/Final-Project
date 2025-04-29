@@ -61,7 +61,7 @@ const emptyUser: User = {
         </div>
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-info-dark" v-if="currentUser && currentUser?.user_id == 0">
+            <a class="button is-info-dark" v-if="currentUser && currentUser.role == 'admin'">
               <RouterLink to="/admin">Admin</RouterLink>
             </a>
             <a class="button is-info-dark">
