@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { currentUser } from '@/components/UserList.vue';
-import { getOne, postUser, type User } from '@/models/user';
+import { currentUser, setCurrentUser } from '@/models/session'
+import { getOne, postUser, type User } from '@/models/user'
 import router from '@/router';
 import { ref } from 'vue';
 
-const invalidInput = ref(false)
+const invalidInput = ref([false,""])
 
 
-async function makeUser() {
+async function makeUser(){
     let values: string[] | number[] = []
     const inputElements = document.getElementsByClassName("input");
     
@@ -15,10 +15,12 @@ async function makeUser() {
          (values as string[]).push((element as HTMLInputElement).value)
     }
     
-    const valueCheck = checkInputs(values)
-    if(valueCheck){
+    let result = checkInputs(values)
+    if(result[0]){
+        invalidInput.value = result
+    }else{
         const birth_Date = new Date(values[6])
-        invalidInput.value = false
+        invalidInput.value[0] = false
         const newUser: User = {
             first_Name: (values[0]) as string,
             last_Name: values[1] as string,
@@ -29,25 +31,20 @@ async function makeUser() {
             birth_Date: birth_Date,
             friends_Ids: []
         }
-        postUser(newUser).then((newUser) => {
-            console.log("New User Created")
-            currentUser.value = newUser
-        })
-        
-        
-    }else{
-        invalidInput.value = true
+        const response = await postUser(newUser)
+        currentUser.value = response
+        router.back()
     }
 }
 
-function checkInputs(values: string[] | number[]): boolean{
+function checkInputs(values: string[] | number[]): [boolean, string]{
     if(values.length != 7){
-        return false
+        return [true, "Missing values"]
     }
     
     for(let value of values){
         if((value as string).length == 0){
-            return false
+            return [true, "Missing inputs"]
         }
     }
 
@@ -56,11 +53,11 @@ function checkInputs(values: string[] | number[]): boolean{
         /\d/.test(values[2] as string) || 
         !(/\d/.test(values[3] as string)) || 
         !(/\d/.test(values[5] as string))){
-        return false
+        return [true, "Numbers found in wrong fields"]
     }
 
     if(!((values[4] as string).includes("@"))){
-        return false
+        return [true, "Email missing domain"]
     }
 
     
@@ -70,19 +67,20 @@ function checkInputs(values: string[] | number[]): boolean{
         Number(dataComponents[0]) > 12 ||
         Number(dataComponents[1]) > 31 ||
         Number(dataComponents[2]) > 2025){
-        return false
+        return [true, "Invalid date"]
     }
 
     
 
-    return true
+    return [false,"good inputs"]
 }
 </script>
 
 <template>
-    <div class="notification is-Danger m-5" v-if="invalidInput">
-        <h1 class="title is-3 has-text-centered my-3">Plase enter valid data</h1>
-        <button class="delete" @click="invalidInput = false"></button>
+    <div class="notification is-Danger m-5" v-if="invalidInput[0]">
+        <h1 class="title is-4 has-text-centered my-3">Plase enter valid data</h1>
+        <h1 class="subtitle is-4 has-text-centered my-3">{{invalidInput[1]}}</h1>
+        <button class="delete" @click="invalidInput[0] = false"></button>
     </div>
     <h1 class="title is-2 has-text-centered my-3">Sign Up</h1>
 <div class="form py-5">  
@@ -140,7 +138,7 @@ function checkInputs(values: string[] | number[]): boolean{
                     
                     <div class="field">
                         <div class="control">
-                            <RouterLink to="/Home"><button class="button is-primary" @click="makeUser()">Create Account</button></RouterLink>
+                            <button class="button is-primary" @click="makeUser()">Create Account</button>
                         </div>
                     </div>
                 </div>
