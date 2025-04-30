@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import type { Summary, SummaryCardio } from '@/models/summary'
-
+import {deleteSummary, type Summary, type SummaryCardio } from '@/models/summary'
 const props = defineProps<{ data: Summary }>()
+
+function remove(){
+  deleteSummary(Number(props.data.id))
+}
 </script>
 
 <template>
@@ -9,6 +12,7 @@ const props = defineProps<{ data: Summary }>()
     <div class="card has-background-grey-dark">
       <div class="card-header has-background-grey-darker">
         <p class="card-header-title">Cardio Summary</p>
+        <button class="delete is-right-aligned" @click="remove()"></button>
       </div>
       <div
         class="container has-text-centered is-title is-capitalized is-size-4 has-text-white has-text-weight-bold"

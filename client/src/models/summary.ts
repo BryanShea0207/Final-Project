@@ -1,6 +1,6 @@
 import CardioSummary from "@/components/CardioSummary.vue";
 import { ref } from "vue";
-import { api, post } from "./session";
+import { api, post, remove } from "./session";
 
 export interface Summary {
   id?: number;
@@ -31,4 +31,8 @@ export async function getSummaryByUser(id:number): Promise<Summary[]> {
 
 export async function PostSummary(summary:Summary) {
   return post('summaries', summary)
+}
+
+export async function deleteSummary(id: number){
+  return remove(`summaries/${id}`)
 }

@@ -72,7 +72,7 @@ Content-Type: application/json
 }
 ###
 
-DELETE http://localhost:8000/summaries/10
+DELETE http://localhost:10000/summaries/65
 ###
 
 POST http://localhost:8000/summaries/seed
