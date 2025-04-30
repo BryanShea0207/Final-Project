@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type SummaryWeight, type SummaryCardio, PostSummary } from '@/models/summary'
+import { PostSummary } from '@/models/summary'
 import { ref } from 'vue'
 import { currentUser } from '@/models/session'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

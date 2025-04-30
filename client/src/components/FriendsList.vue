@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { currentUser } from '@/models/session';
-import { getFriendsOfUser, getOne, type User } from '@/models/user';
+import { getOne, type User } from '@/models/user';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { onMounted, ref } from 'vue';

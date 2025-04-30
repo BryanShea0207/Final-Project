@@ -4,7 +4,7 @@ import { getPostByUser, type Post } from '@/models/posts';
 import { currentUser, isLoggedIn } from '@/models/session';
 import { getUsersWithFriend, getOne, updateFriends, type User } from '@/models/user';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 

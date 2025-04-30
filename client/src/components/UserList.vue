@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { User } from '@/models/user'
-import { getAll, getOne } from '@/models/user'
+import { getAll } from '@/models/user'
 import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { currentUser, setCurrentUser } from '@/models/session'
+import { setCurrentUser } from '@/models/session'
 
 const menuToggle = ref(false)
 const users = ref<User[]>() 
