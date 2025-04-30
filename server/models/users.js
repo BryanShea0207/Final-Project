@@ -31,6 +31,16 @@ async function get(id) {
 }
 
 async function search(query, limit = 30, offset = 0, sort = 'id', order = 'asc'){
+    
+    if(!isNaN(query)){
+        const { data, error } = await BaseQuery()
+            .select()
+            .contains('friends_Ids', [query])
+        if(error) {
+            throw error
+        }
+        return data
+    }
     const { data: items, error, count } = await BaseQuery()
     .or(`first_Name.ilike.%${query}%,last_Name.ilike.%${query}%,email.ilike.%${query}%,phone.ilike.%${query}%`)
     .order(sort, { ascending: order === 'asc' })

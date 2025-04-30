@@ -8,7 +8,10 @@ GET http://localhost:8000/users/
 GET http://localhost:8000/users/6
 ###
 
-GET http://localhost:8000/users/search/Gonzalez?limit=10&sort=first_Name&order=asc
+GET http://localhost:10000/users/search/Gonzalez?limit=10&sort=first_Name&order=asc
+###
+
+Get http://localhost:10000/users/search/10
 ###
 
 POST http://localhost:8000/users/
