@@ -2,7 +2,6 @@
 import AddExercise from '@/components/AddExercise.vue'
 import FriendsList from '@/components/FriendsList.vue'
 import SocialFeed from '@/components/SocialFeed.vue'
-
 </script>
 
 <template>
@@ -16,7 +15,9 @@ import SocialFeed from '@/components/SocialFeed.vue'
       </div>
       <div class="column" style="height: 100%;">
         <div class="panel p-5" style="height: 100%">
-        <FriendsList />
+          <Suspense>
+            <FriendsList />
+          </Suspense>
         </div>
       </div>
     </section>

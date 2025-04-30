@@ -26,11 +26,9 @@ export async function getOneSummary(id:number): Promise<Summary> {
 } 
 
 export async function getSummaryByUser(id:number): Promise<Summary[]> {
-  console.log("Searching for summaries by user " + id)
   return api(`summaries/search/${id}?`)
 }
 
 export async function PostSummary(summary:Summary) {
-  console.log("Trying to post new summary")
   return post('summaries', summary)
 }

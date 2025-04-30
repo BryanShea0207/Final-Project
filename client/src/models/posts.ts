@@ -25,6 +25,6 @@ export async function getPostByUser(id:number): Promise<Post[]> {
 }
 
 export async function postPost(post:Post) {
-  console.log("Trying to post new post")
+  ("Trying to post new post")
   return upload('posts', post)
 }
