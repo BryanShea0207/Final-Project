@@ -14,11 +14,7 @@ import SocialFeed from '@/components/SocialFeed.vue'
         <SocialFeed/>
       </div>
       <div class="column" style="height: 100%;">
-        <div class="panel p-5" style="height: 100%">
-          <Suspense>
-            <FriendsList />
-          </Suspense>
-        </div>
+        <FriendsList />
       </div>
     </section>
   </main>

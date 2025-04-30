@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { getOne, getPostByUser, type Post } from '@/models/posts'
-import { onMounted, ref } from 'vue'
+import { getPostByUser, type Post } from '@/models/posts'
+import { ref } from 'vue'
 import SocialPost  from './SocialPost.vue'
 import { currentUser } from '@/models/session'
+
 const posts = ref<Post[]>([])
 
 getPosts().then((feedPosts) => posts.value = feedPosts)
