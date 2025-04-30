@@ -6,7 +6,7 @@ import CardioSummary from './CardioSummary.vue'
 import SocialPost from './SocialPost.vue'
 import { getPostByUser, type Post } from '@/models/posts'
 import { getSummaryByUser, type Summary } from '@/models/summary'
-import { currentUser } from './UserList.vue'
+import { currentUser } from '@/models/session'
 
 const selectedUser = ref<User>();
 
@@ -49,15 +49,9 @@ function viewFriends(userId: number){
   showSummeries.value = false
   showFriends.value = true
 
-  changeSelectedUser(userId).then((userSelection) => {
-    console.log("changing selected user")
-    selectedUser.value = userSelection
-  })
+  changeSelectedUser(userId).then((userSelection) => selectedUser.value = userSelection)
 
-  getUsersFriends(userId).then((friends) => {
-    console.log("Got new selected user friends")
-    userFriendList.value = friends
-  })
+  getUsersFriends(userId).then((friends) => userFriendList.value = friends)
 }
 
 function viewSummeries(userId: number){
@@ -126,10 +120,10 @@ async function getUsersSummaries(id:number): Promise<Summary[]> {
           <td>{{ user.first_Name + " " + user.last_Name }}</td>
           <td>
             <div class="buttons">
-              <button class="button is-danger" @click="deleteAccount(user.user_id)">delete</button>
-              <a class="button is-primary" @click="viewPosts(user.user_id)">View Posts</a>
-              <a class="button is-primary" @click="viewFriends(user.user_id)">View Friends</a>
-              <a class="button is-primary" @click="viewSummeries(user.user_id)">View Summaries</a>
+              <button class="button is-danger" @click="deleteAccount(user.user_id as number)">delete</button>
+              <a class="button is-primary" @click="viewPosts(user.user_id as number)">View Posts</a>
+              <a class="button is-primary" @click="viewFriends(user.user_id as number)">View Friends</a>
+              <a class="button is-primary" @click="viewSummeries(user.user_id as number)">View Summaries</a>
             </div>
           </td>
         </tr>

@@ -2,7 +2,7 @@
 import { postPost, type Post } from '@/models/posts'
 import type { Summary } from '@/models/summary'
 import { ref, defineProps } from 'vue'
-import { currentUser } from './UserList.vue'
+import { currentUser } from '@/models/session'
 
 const noteVisable = ref(false)
 const sharing = ref(false)
@@ -13,7 +13,7 @@ function sharePost() {
   if (currentUser?.value) {
     let newPost: Post = {
       content: (document.getElementById('postContent') as HTMLInputElement).value,
-      user_Id: currentUser.value.user_id,
+      user_Id: currentUser.value.user_id as number,
       summary_Id: props.summary.id || 0,
       date: new Date()
     }

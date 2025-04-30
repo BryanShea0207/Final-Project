@@ -3,6 +3,7 @@ import type { User } from '@/models/user'
 import { getAll, getOne } from '@/models/user'
 import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { currentUser, setCurrentUser } from '@/models/session'
 
 const menuToggle = ref(false)
 const users = ref<User[]>() 
@@ -14,16 +15,6 @@ const fetchData = async () => {
 }
 
 onMounted(fetchData)
-</script>
-
-<script lang="ts">
-export const currentUser = ref<User>()
-
-
-async function setCurrentUser(user: User ) {
-  currentUser.value = user
-}
-
 </script>
 
 <template>

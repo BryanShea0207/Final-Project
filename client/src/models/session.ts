@@ -1,8 +1,9 @@
 import { ref } from 'vue'
 import * as myFetch from './myFetch'
-import { getOne, type User } from './user'
 import * as myPost from './myPost'
+import * as myPatch from './myPatch'
 import * as myDelete from './myDelete'
+import { getOne, type User } from './user'
 
 export function api<T>(action: string): Promise<T> {
   return myFetch.api<T>(action)
@@ -16,26 +17,29 @@ export function remove<T>(action:string): Promise<T>{
   return myDelete.api<T>(action)
 }
 
-const session = ref({
-  user: null as User | null,
-  token: null as string | null,
-})
-
-export function refSession() {
-  return session
+export function update<T>(action:string, item: object) {
+    myPatch.api<T>(action, item)
 }
 
-export const isAdmin = () => session.value?.user?.role === 'admin'
-
-export const isLoggedIn = () => session.value?.user !== null
-
-export function login(id: number) {
-  return getOne(id).then((user) => {
-    session.value.user = user
-  })
+export const emptyUser: User = {
+  user_id: -1,
+  first_Name: "Signed",
+  last_Name: "Out",
+  age: -1,
+  birth_Date: new Date(),
+  email: "",
+  gender: "",
+  role: "",
+  phone: "",
+  friends_Ids: []
 }
 
-export function logout() {
-  session.value.user = null
-  session.value.token = null
+export const currentUser = ref<User>(emptyUser)
+
+export function setCurrentUser(user: User ) {
+  currentUser.value = user
+}
+
+export function isLoggedIn(): boolean {
+  return !(currentUser.value == emptyUser)
 }

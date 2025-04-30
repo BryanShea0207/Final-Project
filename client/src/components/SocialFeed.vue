@@ -1,25 +1,11 @@
 <script setup lang="ts">
-import { getOne, getPostByUser, type Post } from '@/models/posts';
-import { onMounted, ref } from 'vue';
+import { getOne, getPostByUser, type Post } from '@/models/posts'
+import { onMounted, ref } from 'vue'
 import SocialPost  from './SocialPost.vue'
-import { currentUser } from './UserList.vue';
-
-const loaded = ref(false)
+import { currentUser } from '@/models/session'
 const posts = ref<Post[]>([])
 
-const fetchData = async () => {
-  
-  try {
-    const response = await getPosts();
-    response.forEach((post) => {
-        posts.value.push(post)
-    })  
-  } finally {
-    loaded.value = true;
-  }
-};
-
-onMounted(fetchData)
+getPosts().then((feedPosts) => posts.value = feedPosts)
 </script>
 
 <script lang="ts">
@@ -33,15 +19,13 @@ async function getPosts(): Promise<Post[]>{
                 friendsPosts.push(post)
             })
         }
-        console.log(friendsPosts)
 
         const userId = currentUser.value.user_id
-        console.log("getting posts for user_ID " + userId)
-        const posts = await getPostByUser(userId)
+        const posts = await getPostByUser(userId as number)
+
         posts.forEach((post) => {
             friendsPosts.push(post)
         })
-        console.log(friendsPosts)
     }
     friendsPosts.sort((a,b) => {
         const dateA = new Date(a.date)
@@ -55,13 +39,10 @@ async function getPosts(): Promise<Post[]>{
 </script>
 
 <template>
-    <main v-if="loaded">
+    <main>
         <div class="container py-3" v-for="post in posts">.
             <SocialPost :post="post" >
             </SocialPost>
         </div>
-    </main>
-    <main v-else>
-        NO Posts to show
     </main>
 </template>

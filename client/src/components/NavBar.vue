@@ -1,23 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { currentUser } from './UserList.vue'
-import type { User } from '@/models/user'
+import { currentUser, emptyUser } from '@/models/session'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHouse, faPersonRunning } from '@fortawesome/free-solid-svg-icons'
-const isActive = ref(false)
 
-const emptyUser: User = {
-  user_id: -1,
-  first_Name: "Signed",
-  last_Name: "Out",
-  age: -1,
-  birth_Date: new Date(),
-  email: "",
-  gender: "",
-  role: "",
-  phone: "",
-  friends_Ids: []
-}
+const isActive = ref(false)
 </script>
 
 <template>
@@ -49,9 +36,12 @@ const emptyUser: User = {
       :class="{ 'is-active': isActive }"
     >
       <div class="navbar-start">
-        <RouterLink to="/Home" class="navbar-item has-text-info-dark-invert"><FontAwesomeIcon :icon="faHouse" /> Home </RouterLink>
+        <RouterLink to="/Home" class="navbar-item has-text-info-dark-invert" v-if="currentUser.user_id as number != -1">
+          <FontAwesomeIcon :icon="faHouse" /> 
+          Home 
+        </RouterLink>
 
-        <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert">
+        <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert" v-if="currentUser.user_id as number != -1">
           <FontAwesomeIcon :icon="faPersonRunning"/> Activity
         </RouterLink>
       </div>
@@ -65,7 +55,7 @@ const emptyUser: User = {
               <RouterLink to="/admin">Admin</RouterLink>
             </a>
             <a class="button is-info-dark">
-              <RouterLink to="/" @click="currentUser = emptyUser"
+              <RouterLink to="/" @click="currentUser = emptyUser" v-if="currentUser.user_id as number != -1"
                 ><strong>Sign out</strong></RouterLink
               >
             </a>
