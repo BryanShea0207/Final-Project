@@ -2,20 +2,32 @@
 import SocialPost from '@/components/SocialPost.vue';
 import { getPostByUser, type Post } from '@/models/posts';
 import { currentUser, isLoggedIn } from '@/models/session';
-import { getFriendsOfUser, getOne, updateFriends, type User } from '@/models/user';
-import { onMounted, ref } from 'vue';
+import { getUsersWithFriend, getOne, updateFriends, type User } from '@/models/user';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
+    const loaded = ref(true)
     const route = useRoute('/Profile/[id]')
     const showingUser = ref<User>()
     const userPosts = ref<Post[]>([])
     const userFriends = ref<User[]>([])
 
-    getOne(Number(route.params.id)).then((user) => showingUser.value = user)
-    getPostByUser(Number(route.params.id)).then((posts) => userPosts.value = posts)
-    getFriendsOfUser(Number(route.params.id)).then((friends) => userFriends.value = friends)
-    
+    fetchProfile(Number(route.params.id))
+
+    watch(() => route.params.id,(newId) => {
+      fetchProfile(Number(newId));
+    })
+
+    function fetchProfile(id: number) {
+      loaded.value = false
+      getOne(id).then((user) => showingUser.value = user)
+      getPostByUser(id).then((posts) => userPosts.value = posts)
+      getUsersWithFriend(id).then((friends) => userFriends.value = friends)
+      console.log("components loaded")
+      loaded.value = true
+    }
 
     function addfrind(){
         if(isLoggedIn()){
@@ -25,7 +37,7 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 </script>
 
 <template>
-    <div class="hero-body">
+    <div class="hero-body" v-if="loaded">
     <div class="container">
       <div class="columns is-vcentered">
         <div class="column">
@@ -46,8 +58,9 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
             </div>
         </div>
         <div class=" container column is-one-fifth">
+          <h2 class="title">People you may know</h2>
             <div class="m-5 friend p-0 m-0" v-for="friend in userFriends">
-          <RouterLink :to="`Profile/${friend.user_id}`">
+          <RouterLink :to="`/Profile/${friend.user_id}`">
             <p class="is-size-5"><FontAwesomeIcon :icon="faCircleUser"/> {{ friend.first_Name + " " + friend.last_Name }}</p>
           </RouterLink>
         </div>

@@ -2,20 +2,25 @@
 import type { Post } from '@/models/posts'
 import CardioSummary from './CardioSummary.vue'
 import WeightSummary from './WeightSummary.vue';
-import SummaryFooter from './SummaryFooter.vue'
 import { getOne, type User } from '@/models/user';
 import { getOneSummary, type Summary } from '@/models/summary';
-import { ref, type Ref } from 'vue';
+import { ref, watch, type Ref } from 'vue';
 
 const props = defineProps<{ post: Post }>()
-const loaded = ref(false)
 const postUser = ref<User>();
- getOne(props.post.user_Id).then((user) => {postUser.value = user})
-
 const summary = ref<Summary>()
-getSummary(summary, props.post.summary_Id).then(() => {
-  loaded.value = true;
-})
+const loaded = ref(false)
+
+setup(props.post)
+
+watch(() => props.post,(newPost) => {
+      setup(newPost)
+    }
+ );
+  function setup(post: Post) {
+    getOne(post.user_Id).then((user) => {postUser.value = user})
+    getSummary(summary, post.summary_Id).then(() => loaded.value = true)
+  }
 </script>
 
 <script lang="ts">

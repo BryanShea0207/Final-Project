@@ -36,6 +36,10 @@ export async function getFriendsOfUser(id: number): Promise<User[]> {
     return friends
 }
 
+export async function getUsersWithFriend(id: number): Promise<User[]> {
+    return api(`users/search/${id}?`)
+}
+
 export async function deleteUser(id:number) {
     return remove(`users/${id}`)
 }

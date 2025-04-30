@@ -18,7 +18,7 @@ export function remove<T>(action:string): Promise<T>{
 }
 
 export function update<T>(action:string, item: object) {
-    myPatch.api<T>(action, item)
+  myPatch.api<T>(action, item)
 }
 
 export const emptyUser: User = {
