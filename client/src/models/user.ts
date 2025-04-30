@@ -2,10 +2,10 @@ import { ref } from "vue";
 import type { Post } from "./posts";
 import type { Summary } from "./summary";
 import users from "@/data/users.json";
-import { api, remove } from './session'
+import { api, post, remove } from './session'
 
 export interface User {
-    user_id: number;
+    user_id?: number;
     first_Name: string;
     last_Name: string;
     email: string;
@@ -14,7 +14,7 @@ export interface User {
     birth_Date: Date;
     friends_Ids: [];
     gender: string;
-    role: string;
+    role?: string;
 }
 
 export async function getAll(): Promise<User[]> {
@@ -27,4 +27,8 @@ export async function getOne(id: number): Promise<User>{
 
 export async function deleteUser(id:number) {
     return remove(`users/${id}`)
+}
+
+export async function postUser(newUser: User) {
+    return post('users/',newUser)
 }
