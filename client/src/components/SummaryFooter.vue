@@ -45,7 +45,9 @@ function sharePost() {
           placeholder="Tell us about your workout"
           id="postContent"
         ></textarea>
-        <button class="button is-primary" @click="sharePost()">Submit</button>
+        <RouterLink :to="`/Home`" @click="sharePost()">
+          <button class="button is-primary">Submit</button>
+        </RouterLink>
       </div>
     </div>
   </div>
