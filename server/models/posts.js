@@ -38,10 +38,7 @@ async function search(query, limit = 30, offset = 0, sort = 'id', order = 'asc')
     if (error) {
         throw error
     }
-    return {
-        items,
-        total: count
-    }
+    return items
 }
 
 async function create(post) {

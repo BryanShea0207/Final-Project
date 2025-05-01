@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Post } from '@/models/posts'
+import { postPost, type Post } from '@/models/posts'
 import type { Summary } from '@/models/summary'
 import { ref, defineProps } from 'vue'
-import { currentUser } from './UserList.vue'
+import { currentUser } from '@/models/session'
 
 const noteVisable = ref(false)
 const sharing = ref(false)
@@ -11,12 +11,14 @@ const props = defineProps<{ summary: Summary }>()
 
 function sharePost() {
   if (currentUser?.value) {
-    currentUser.value.posts.push({
+    let newPost: Post = {
       content: (document.getElementById('postContent') as HTMLInputElement).value,
-      author: 'John Smith',
-      summary: props.summary,
-      date: new Date(),
-    })
+      user_Id: currentUser.value.user_id as number,
+      summary_Id: props.summary.id || 0,
+      date: new Date()
+    }
+
+    postPost(newPost)
   }
   ;(document.getElementById('postContent') as HTMLInputElement).value = ''
 }
@@ -43,7 +45,9 @@ function sharePost() {
           placeholder="Tell us about your workout"
           id="postContent"
         ></textarea>
-        <button class="button is-primary" @click="sharePost()">Submit</button>
+        <RouterLink :to="`/Home`" @click="sharePost()">
+          <button class="button is-primary">Submit</button>
+        </RouterLink>
       </div>
     </div>
   </div>

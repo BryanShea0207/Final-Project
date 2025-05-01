@@ -2,19 +2,53 @@ import { ref } from "vue";
 import type { Post } from "./posts";
 import type { Summary } from "./summary";
 import users from "@/data/users.json";
+import { api, post, remove, update } from './session'
 
 export interface User {
-    userId: number;
-    userName: string;
-    posts: any[];
-    summaries: any[];
-    friendsIds: any[];
+    user_id?: number;
+    first_Name: string;
+    last_Name: string;
+    email: string;
+    phone: string;
+    age: number;
+    birth_Date: Date;
+    friends_Ids: number[];
+    gender: string;
+    role?: string;
 }
 
-export function getAll() {
-    return users
+export async function getAll(): Promise<User[]> {
+    return api("users")
 }
 
-export function getOne(id: number){
-    return users.users[id]
+export async function getOne(id: number): Promise<User>{
+    return api(`users/${id}`)
 }
+
+export async function getFriendsOfUser(id: number): Promise<User[]> {
+    const user = await getOne(id)
+    const friends = await Promise.all(
+        user.friends_Ids.map(friendId => getOne(friendId))
+    )
+    return friends
+}
+
+
+export async function getUsersWithFriend(id: number): Promise<User[]> {
+    return api(`users/search/${id}?`)
+}
+
+export async function deleteUser(id:number) {
+    return remove(`users/${id}`)
+}
+
+export async function postUser(newUser: User) {
+    return post('users/',newUser)
+}
+
+export async function updateFriends(id:number, friendId: number) {
+    const currentList = (await getOne(id)).friends_Ids
+    currentList.push(friendId)
+    return update(`users/${id}`, {"friends_Ids": currentList})
+}
+

@@ -8,7 +8,10 @@ GET http://localhost:8000/users/
 GET http://localhost:8000/users/6
 ###
 
-GET http://localhost:8000/users/search/Gonzalez?limit=10&sort=first_Name&order=asc
+GET http://localhost:10000/users/search/Gonzalez?limit=10&sort=first_Name&order=asc
+###
+
+Get http://localhost:10000/users/search/10
 ###
 
 POST http://localhost:8000/users/
@@ -21,7 +24,7 @@ Content-Type: application/json
 }
 ###
 
-PATCH http://localhost:8000/users/5
+PATCH http://localhost:10000/users/10
 Content-Type: application/json
 
 {
@@ -69,7 +72,7 @@ Content-Type: application/json
 }
 ###
 
-DELETE http://localhost:8000/summaries/10
+DELETE http://localhost:10000/summaries/65
 ###
 
 POST http://localhost:8000/summaries/seed
@@ -108,3 +111,8 @@ DELETE http://localhost:8000/posts/52
 ###
 
 POST http://localhost:8000/posts/seed
+###
+
+###Vue request tests
+
+GET http://localhost:8000/summaries/search/5?

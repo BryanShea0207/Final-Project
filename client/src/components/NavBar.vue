@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { currentUser } from './UserList.vue'
-import type { User } from '@/models/user'
+import { currentUser, emptyUser } from '@/models/session'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faHouse, faPersonRunning } from '@fortawesome/free-solid-svg-icons'
-const isActive = ref(false)
+import { faHouse, faPersonRunning, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
-const emptyUser: User = {
-  userId: -1,
-  userName: 'Signed Out',
-  posts: [],
-  summaries: [],
-  friendsIds: [],
-}
+const isActive = ref(false)
 </script>
 
 <template>
@@ -44,23 +36,33 @@ const emptyUser: User = {
       :class="{ 'is-active': isActive }"
     >
       <div class="navbar-start">
-        <RouterLink to="/main" class="navbar-item has-text-info-dark-invert"><FontAwesomeIcon :icon="faHouse" /> Home </RouterLink>
+        <RouterLink to="/Home" class="navbar-item has-text-info-dark-invert" v-if="currentUser.user_id as number != -1">
+          <FontAwesomeIcon :icon="faHouse" /> 
+          Home 
+        </RouterLink>
 
-        <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert">
+        <RouterLink to="/ActivityView" class="navbar-item has-text-info-dark-invert" v-if="currentUser.user_id as number != -1">
           <FontAwesomeIcon :icon="faPersonRunning"/> Activity
         </RouterLink>
       </div>
       <div class="navbar-end">
+        <div class="navbar-item" v-if="currentUser.user_id as number != -1">
+          <p>{{ currentUser?.first_Name + " " + currentUser?.last_Name }}</p>
+        </div>
         <div class="navbar-item">
+          <RouterLink to="/Search" class="navbar-item has-text-info-dark-invert" v-if="currentUser.user_id as number != -1">
+            <FontAwesomeIcon :icon="faMagnifyingGlass" /> Search
+          </RouterLink>
           <div class="buttons">
-            <a class="button is-info-dark" v-if="currentUser && currentUser?.userId == 0">
+            <a class="button is-info-dark" v-if="currentUser && currentUser.role == 'admin'">
               <RouterLink to="/admin">Admin</RouterLink>
             </a>
-            <a class="button is-info-dark">
-              <RouterLink to="/" @click="currentUser = emptyUser"
-                ><strong>Sign out</strong></RouterLink
-              >
+            <a class="button is-info-dark" v-if="currentUser.user_id as number != -1">
+              <RouterLink to="/" @click="currentUser = emptyUser"><strong>Sign out</strong></RouterLink>
             </a>
+            <RouterLink to="/" class="navbar-item has-text-info-dark-invert" v-if="currentUser.user_id as number == -1">
+            Log In
+          </RouterLink>
           </div>
         </div>
       </div>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { SummaryWeight, SummaryCardio } from '@/models/summary'
+import { PostSummary } from '@/models/summary'
 import { ref } from 'vue'
-import { currentUser } from './UserList.vue'
+import { currentUser } from '@/models/session'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons'
+import router from '@/router'
 
 const current = ref('weight')
 
@@ -59,13 +60,13 @@ const showInputs = ref(false)
           <div class="field">
             <label class="label">Exercise Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Exercise Name" id="weightName" />
+              <input class="input" type="text" placeholder="Exercise Name" id="weightName" min="0"/>
             </div>
           </div>
           <div class="field">
             <label class="label">Weight</label>
             <div class="control is-flex">
-              <input class="input" type="number" placeholder="Weight" id="pounds">
+              <input class="input" type="number" placeholder="Weight" id="pounds" min="0">
                 <span class="has-text-right pt-2">lbs</span> 
               </input>
             </div>
@@ -74,13 +75,13 @@ const showInputs = ref(false)
             <div class="field">
               <label class="label">Sets</label>
               <div class="control is-flex">
-                <input class="input" type="number" placeholder="Sets" id="sets" />
+                <input class="input" type="number" placeholder="Sets" id="sets" min="0" />
               </div>
             </div>
             <div class="field">
               <label class="label">Reps</label>
               <div class="control is-flex">
-                <input class="input" type="number" placeholder="Reps" id="reps"/>
+                <input class="input" type="number" placeholder="Reps" id="reps" min="0"/>
               </div>
             </div>
           </div>
@@ -109,7 +110,7 @@ const showInputs = ref(false)
             <label class="label">Distance</label>
             <div class="control">
               <div class="is-flex is-align-items-center">
-              <input class="input" type="number" placeholder="Distance" id="distance">
+              <input class="input" type="number" placeholder="Distance" id="distance" min="0"/>
                 <span class="has-text-right">Miles</span>
               </input>
               </div>
@@ -118,8 +119,8 @@ const showInputs = ref(false)
           <div class="field">
             <label class="label">Time</label>
             <div class="control is-flex is-align-items-center">
-              <input class="input" type="number" placeholder="Hours" id="hour"/>
-              <input class="input" type="number" placeholder="Minutes" id="minute"/>
+              <input class="input" type="number" placeholder="Hours" id="hour" min="0"/>
+              <input class="input" type="number" placeholder="Minutes" id="minute" min="0"/>
             </div>
           </div>
           <div class="field">
@@ -144,7 +145,8 @@ function clearContent(){
     for(let element of document.querySelectorAll("input, textarea")){
       (element as HTMLInputElement).value = ""
     }
-
+    router.push("/ActivityView")
+    router.go(1)
   }
 
 function createSummaryWeight() {
@@ -154,16 +156,17 @@ function createSummaryWeight() {
   const reps = document.getElementById('reps') as HTMLInputElement
   const notes = document.getElementById('weightNote') as HTMLInputElement
 
-  if (weightName && sets && reps && pounds && notes) {
+  if (weightName && sets && reps && pounds && notes && currentUser.value?.user_id) {
     const summary = {
       name: weightName.value as string,
       sets: Number(sets.value),
       reps: Number(reps.value),
       weight: Number(pounds.value),
       note: notes.value,
-      type: 'weight'
+      type: 'weight',
+      user_id: currentUser.value.user_id 
     }
-    currentUser.value?.summaries.push(summary)
+    PostSummary(summary)
     clearContent()
   }
 }
@@ -176,14 +179,16 @@ function createSummaryCardio() {
     document.getElementById('minute') as HTMLInputElement]
   const notes = document.getElementById('cardioNote') as HTMLInputElement
 
-  if (cardioName && distance && time && notes) {
+  if (cardioName && distance && time && notes && currentUser.value?.user_id) {
     const summary = {
       name: cardioName.value,  
-      time: Number(time[0].value) * 60 + Number(time[1].value),  
-      distance: Number(distance.value),
-      note: notes.value
+      time: (Number(time[0].value) * 60 + Number(time[1].value)) as number,  
+      distance: Number(distance.value) as number,
+      note: notes.value,
+      type: 'cardio',
+      user_id: currentUser.value.user_id
     }
-    currentUser.value?.summaries.push(summary)
+    PostSummary(summary)
     clearContent()
   }
 }
