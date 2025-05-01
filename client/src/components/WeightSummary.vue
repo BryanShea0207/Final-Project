@@ -4,8 +4,6 @@ import { deleteSummary, type Summary, type SummaryWeight } from '@/models/summar
 
 const props = defineProps<{data: Summary}>()
 
-console.log(props.data.user_id == currentUser.value.user_id)
-
 function remove() {
   deleteSummary(Number(props.data.id))
 }

@@ -25,7 +25,6 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
       getOne(id).then((user) => showingUser.value = user)
       getPostByUser(id).then((posts) => userPosts.value = posts)
       getUsersWithFriend(id).then((friends) => userFriends.value = friends)
-      console.log("components loaded")
       loaded.value = true
     }
 

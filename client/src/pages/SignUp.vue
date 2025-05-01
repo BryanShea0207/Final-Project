@@ -118,7 +118,7 @@ function checkInputs(values: string[] | number[]): [boolean, string]{
                         <div class="field px-5">
                             <label class="label">Age</label>
                             <div class="control is-flex">
-                                <input class="input" type="number" placeholder="25" id="age"/>
+                                <input class="input" type="number" placeholder="25" id="age" min="0"/>
                             </div>
                         </div>
                     </div>
