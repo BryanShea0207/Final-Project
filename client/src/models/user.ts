@@ -26,15 +26,13 @@ export async function getOne(id: number): Promise<User>{
 }
 
 export async function getFriendsOfUser(id: number): Promise<User[]> {
-    const friends = await getOne(id).then((user) => {
-        let friends: User[] = []
-        user.friends_Ids.forEach((friend) =>{
-            getOne(friend).then((friend) => friends.push(friend))
-        })
-        return friends
-    })
+    const user = await getOne(id)
+    const friends = await Promise.all(
+        user.friends_Ids.map(friendId => getOne(friendId))
+    )
     return friends
 }
+
 
 export async function getUsersWithFriend(id: number): Promise<User[]> {
     return api(`users/search/${id}?`)

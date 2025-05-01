@@ -30,6 +30,7 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
     function addfrind(){
         if(isLoggedIn()){
+          console.log("adding friend")
             updateFriends(Number(currentUser.value.user_id), Number(route.params.id))
         }
     }
@@ -43,9 +44,11 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
           <h1 class="title">
             {{ showingUser?.first_Name + " " + showingUser?.last_Name }}
           </h1>
-          <h2 class="subtitle button is-primary has-text-warning" @click="addfrind()">
-            Add friend
-          </h2>
+          <div class="button" @click="addfrind()">
+            <h2 class="subtitle button is-primary has-text-warning">
+              Add friend
+            </h2>
+          </div>
         </div>
       </div>
     </div>
