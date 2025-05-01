@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { currentUser, setCurrentUser } from '@/models/session'
-import { getOne, postUser, type User } from '@/models/user'
+import { currentUser } from '@/models/session'
+import { postUser, type User } from '@/models/user'
 import router from '@/router';
 import { ref } from 'vue';
 
@@ -50,10 +50,18 @@ function checkInputs(values: string[] | number[]): [boolean, string]{
 
     if(/\d/.test(values[0] as string) || 
         /\d/.test(values[1] as string) || 
-        /\d/.test(values[2] as string) || 
-        !(/\d/.test(values[3] as string)) || 
-        !(/\d/.test(values[5] as string))){
-        return [true, "Numbers found in wrong fields"]
+        /\d/.test(values[2] as string)){
+        return [true, "Numbers found in character only fields"]
+    }
+
+    if(!(/^\d+$/.test(values[3] as string))){
+        return [true, "age can only contain digets"]
+    } 
+
+    if(!(/^\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})$/
+        .test(values[5] as string))){
+        
+        return [true, "Phone number is not in a valid format (123) 456-7890)"]
     }
 
     if(!((values[4] as string).includes("@"))){
@@ -125,7 +133,7 @@ function checkInputs(values: string[] | number[]): [boolean, string]{
                     <div class="field">
                         <label class="label">Phone Number</label>
                         <div class="control is-flex">
-                            <input class="input" type="text" placeholder="+1 (234) 567-8910" id="phone" />
+                            <input class="input" type="text" placeholder="(123) 456-7890" id="phone" />
                         </div>
                     </div>
 

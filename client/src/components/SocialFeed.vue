@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { getPostByUser, type Post } from '@/models/posts'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import SocialPost  from './SocialPost.vue'
 import { currentUser } from '@/models/session'
 
 const posts = ref<Post[]>([])
+const loaded = ref(false)
+
+watch(() => posts.value, (newposts) => {
+    if(newposts.length > 0){
+        loaded.value = true
+    }
+})
 
 getPosts().then((feedPosts) => posts.value = feedPosts)
 </script>
@@ -41,9 +48,13 @@ async function getPosts(): Promise<Post[]>{
 
 <template>
     <main>
-        <div class="container py-3" v-for="post in posts">.
-            <SocialPost :post="post" >
-            </SocialPost>
+        <div v-if="loaded">
+            <div class="container py-3" v-for="post in posts">.
+                <SocialPost :post="post" />
+            </div>
+        </div>
+        <div v-else>
+            <h2 class="title"> No post to show try making some posts or adding friends</h2>
         </div>
     </main>
 </template>

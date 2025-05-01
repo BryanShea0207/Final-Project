@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import UserList from '@/components/UserList.vue'
-import type { User } from '@/models/user'
 import { ref } from 'vue'
 
 const showUsers = ref(false)
