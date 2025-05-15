@@ -8,7 +8,7 @@ import type { OptionsProp } from "@oruga-ui/oruga-next";
 const usersList = ref<User[]>([])
 const userOptions = ref<User[]>([])
 const options: OptionsProp = getAll()
-console.log(options)
+
 getAll().then((users) => {
   usersList.value = users
 })
@@ -28,6 +28,7 @@ async function convertUsers(users:Users[]) {
 <template>
     <div class="container">
       <o-autocomplete
+            class = "input is-info"
             v-model="selected"
             :options="options"
             placeholder="Find a name..."
