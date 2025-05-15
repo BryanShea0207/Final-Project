@@ -7,7 +7,7 @@ import type { OptionsProp } from "@oruga-ui/oruga-next";
 
 const usersList = ref<User[]>([])
 const userOptions = ref<User[]>([])
-const options: OptionsProp = getAll()
+//const options: OptionsProp = getAll()
 
 getAll().then((users) => {
   usersList.value = users
@@ -16,7 +16,7 @@ getAll().then((users) => {
 const selected = ref();
 
 
-async function convertUsers(users:Users[]) {
+async function convertUsers(users:User[]) {
   const formatedUsers = []
   users.forEach(user => {
     formatedUsers.push({label: user.first_Name + " " + user.last_Name, value: user})
